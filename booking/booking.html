@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YesBima - Login</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/booking-style.css">
+</head>
+<body>
+
+    <!-- Dark Header Strip -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i> YesBima
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+        <div class="login-card">
+            
+            <!-- Icon -->
+            <div class="icon-wrapper">
+                <i class="fas fa-phone-alt"></i>
+            </div>
+
+            <!-- Headings -->
+            <h2>Enter Phone Number</h2>
+            <p class="subtitle">We'll send you a verification code</p>
+
+            <!-- Form -->
+            <form id="loginForm">
+                <label for="phone" class="input-label">Phone Number</label>
+                
+                <div class="input-group">
+                    <div class="country-code">+91</div>
+                    <div class="input-wrapper">
+                        <i class="fas fa-phone-alt input-icon"></i>
+                        <input type="tel" id="phone" placeholder="98765 43210" maxlength="10" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="otpBtn">Send OTP</button>
+            </form>
+
+            <!-- Disclaimer -->
+            <div class="disclaimer-box">
+                <p>By continuing, you agree to our Terms of Service and Privacy Policy. We'll never share your personal information.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="../js/booking-script.js"></script>
+</body>
+</html>
