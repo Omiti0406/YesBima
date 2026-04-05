@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YesBima - Insurance Made Simple</title>
+    {% load static %}
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href='{% static "app_core/css/style.css" %}'>
+</head>
+
+<body>
+
+    <!-- ==================== PART 1: HERO & DARK SECTION ==================== -->
+    <div class="dark-wrapper">
+        <div class="stars"></div>
+
+        <!-- Header -->
+        <div class="container">
+            <header>
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i> YesBima
+                </div>
+            </header>
+
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-text">
+                    <h1>Sleep easy,<br>with the best people on your insurance.</h1>
+                    <p class="subtitle">
+                        Insurance buying experience <span class="highlight">like never before</span>
+                    </p>
+                    <button id="openBookingBtn" class="cta-btn">Book A Free Call <i
+                            class="fas fa-arrow-right"></i></button>
+
+                    <div class="social-proof"><i class="fas fa-check-square"></i> 5000+ Families insured</div>
+                </div>
+
+                <div class="hero-card-section">
+                    <div class="white-card">
+                        <div class="card-content">
+                            <h2>Professional<br>Advice</h2>
+                            <div class="chat-bubble"><i class="fas fa-comment-dots"></i> Which life insurance is best
+                                for me?</div>
+                            <div class="partner-logo"><span style="color:#0077b5">SBI</span> Life <div
+                                    class="partner-bar"></div>
+                            </div>
+                            <div class="partner-logo"><span style="color:#cc0000">RELIANCE</span>
+                                <div class="partner-bar"></div>
+                            </div>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            alt="Advisor" class="person-image">
+                    </div>
+                    <div class="trust-grid">
+                        <div class="trust-title">Trusted by Thousands — here's why</div>
+                        <div class="trust-item"><i class="fas fa-check"></i> No sales, only advisors</div>
+                        <div class="trust-item"><i class="fas fa-check"></i> No spams, EVER</div>
+                        <div class="trust-item"><i class="fas fa-check"></i> 24/7 claims support</div>
+                        <div class="trust-item"><i class="fas fa-check"></i> Unbiased advice</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Clouds Divider -->
+        <div class="clouds"></div>
+
+        <!-- Services Section (Dark Blue) -->
+        <section class="services-section">
+            <div class="container">
+                <div class="section-header-left">
+                    <h3 class="light-sub">We offer</h3>
+                    <h2>Unbiased advice on</h2>
+                </div>
+                <div class="cards-grid">
+                    <div class="service-card reveal">
+                        <div class="icon-circle"><i class="fas fa-stethoscope"></i></div>
+                        <div class="card-text">
+                            <h4>Health Insurance</h4>
+                            <p>YesBima helps you protect what matters - you and your family.</p>
+                        </div>
+                    </div>
+                    <div class="service-card reveal delay-1">
+                        <div class="icon-circle"><i class="fas fa-shield-halved"></i></div>
+                        <div class="card-text">
+                            <h4>Term Life Insurance</h4>
+                            <p>YesBima helps you secure your family's future.</p>
+                        </div>
+                    </div>
+                    <div class="service-card reveal delay-2">
+                        <div class="icon-circle"><i class="fas fa-file-magnifying-glass"></i></div>
+                        <div class="card-text">
+                            <h4>Policy Review</h4>
+                            <p>YesBima helps you spot gaps and fix them fast.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="center-btn-wrapper reveal">
+                    <button class="cta-btn 1secondary-btn">Book A Free Call Now! <i
+                            class="far fa-calendar-alt"></i></button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== PART 2: LIGHT SECTIONS ==================== -->
+
+    <!-- PROCESS TIMELINE SECTION -->
+    <section class="white-section process-section">
+        <div class="container">
+            <h2 class="section-title reveal">Here’s how we do it</h2>
+
+            <div class="timeline-container reveal">
+                <div class="timeline-line"></div>
+                <div class="timeline-step">
+                    <div class="step-marker active">1</div>
+                    <div class="step-content">
+                        <h3>Identify and Recommend</h3>
+                        <p>We'll have an in-depth conversation with you and recommend the best insurance policy tailored
+                            to your needs.</p>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-marker">2</div>
+                    <div class="step-content">
+                        <h3>Seamless Assist</h3>
+                        <p>We'll assist you throughout the booking process and clarify any doubts that you may have.</p>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-marker">3</div>
+                    <div class="step-content">
+                        <h3>Optimize</h3>
+                        <p>We provide end-to-end support to ensure smooth claim settlement whenever you need it.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY YesBima SECTION -->
+    <section class="white-section why-yesbima-section">
+        <div class="container">
+            <div class="header-group reveal">
+                <h2 class="text-blue">Why YesBima?</h2>
+                <p class="subtitle-dark">Because getting insurance should <span class="squiggly-blue">feel
+                        reassuring</span>, not risky</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-box reveal">
+                    <div class="icon-circle-blue"><i class="fas fa-user-shield"></i></div>
+                    <h3>Get Insurance that fits your life</h3>
+                    <p>We understand your needs are unique, and so should your insurance plan be.</p>
+                </div>
+                <div class="feature-box reveal delay-1">
+                    <div class="icon-circle-blue"><i class="fas fa-fist-raised"></i></div>
+                    <h3>We fight for your claims, so you don't have to</h3>
+                    <p>No delays and no runarounds. We don't rest until you get what's rightfully yours.</p>
+                </div>
+                <div class="feature-box reveal delay-2">
+                    <div class="icon-circle-blue"><i class="fas fa-headset"></i></div>
+                    <h3>Support that never sleeps so you can</h3>
+                    <p>Because your concerns don't follow a schedule—neither does our support.</p>
+                </div>
+                <div class="feature-box reveal delay-3">
+                    <div class="icon-circle-blue"><i class="fas fa-check-circle"></i></div>
+                    <h3>100% Transparency guaranteed</h3>
+                    <p>We don't believe in fine print. We'll make sure you understand your policy before applying.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARTNERS & STATS SECTION -->
+    <section class="white-section partners-section">
+        <div class="container">
+            <div class="header-group reveal">
+                <h2 class="text-dark">We offer you the best</h2>
+                <p class="subtitle-dark">We only collaborate with the <span class="squiggly-blue">top Insurance
+                        providers</span></p>
+            </div>
+            <div class="logos-row reveal">
+                <div class="logo-box">BAJAJ Allianz</div>
+                <div class="logo-box">HDFC ERGO</div>
+                <div class="logo-box">TATA AIA</div>
+                <div class="logo-box">ICICI Lombard</div>
+                <div class="logo-box">Max Life</div>
+                <div class="logo-box">Care Health</div>
+            </div>
+            <div class="spacer-50"></div>
+            <div class="header-group reveal">
+                <h2 class="text-dark">Benefits of plans that we curate</h2>
+                <p class="subtitle-dark"><span class="squiggly-blue">We stand by you at every step</span> — and select
+                    only the best plans for you</p>
+            </div>
+            <div class="stats-container reveal">
+                <div class="stat-item">
+                    <h3>15,000+</h3>
+                    <p>Cashless hospitals</p>
+                </div>
+                <div class="stat-item border-sides">
+                    <h3>24x7</h3>
+                    <p>Claims support</p>
+                </div>
+                <div class="stat-item">
+                    <h3>₹75,000</h3>
+                    <p>worth of tax saving</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="white-section testimonials-section">
+        <div class="container split-layout">
+            <div class="testimonial-intro sticky-content reveal">
+                <h2 class="text-dark">We don’t make<br>hollow promises</h2>
+                <p class="subtitle-large">Here’s proof...</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="review-card reveal">
+                    <div class="stars-gold"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Suyash Buwade has been helping our family navigate health insurance planning for my family & I.
+                        He has been proactive, diligent and sincere."</p>
+                    <div class="user-info">
+                        <div class="avatar"><i class="fas fa-user"></i></div>
+                        <span>Dr. Suresh JeyaRaman Iyer</span>
+                    </div>
+                </div>
+                <div class="review-card reveal">
+                    <div class="stars-gold"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"I have been puzzled about term insurance for a long time. Ashley helped me a lot. The first
+                        consultation call was very informative."</p>
+                    <div class="user-info">
+                        <div class="avatar"><i class="fas fa-user"></i></div>
+                        <span>Khushboo</span>
+                    </div>
+                </div>
+                <div class="review-card reveal">
+                    <div class="stars-gold"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Deepti Pal was my Term Insurance advisor. She helped me through the process and was very
+                        flexible in terms of follow up calls."</p>
+                    <div class="user-info">
+                        <div class="avatar"><i class="fas fa-user"></i></div>
+                        <span>Navaneeth</span>
+                    </div>
+                </div>
+                <div class="review-card reveal">
+                    <div class="stars-gold"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"I was searching for good health and term insurance. Anushka has helped me understand the key
+                        things to look for."</p>
+                    <div class="user-info">
+                        <div class="avatar"><i class="fas fa-user"></i></div>
+                        <span>Hari Subrahmanyam</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTTOM CTA BANNER -->
+    <section class="bottom-cta-section">
+        <div class="container">
+            <div class="cta-banner reveal">
+                <div class="watermark-shield"><i class="fas fa-shield-alt"></i></div>
+                <div class="banner-text">
+                    <h2>Insurance made<br>simple with <span class="text-blue">YesBima</span></h2>
+                </div>
+                <div class="banner-btn">
+                    <button class="cta-btn">Book a free consultation now! <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PART 3: FAQ & FOOTER (NEW) ==================== -->
+
+    <!-- FAQ SECTION -->
+    <section class="white-section faq-section">
+        <div class="container">
+            <h2 class="section-title text-dark">Frequently asked questions</h2>
+
+            <div class="faq-container">
+                <!-- Question 1 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What is YesBima?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>YesBima is an insurance advisory platform that helps you understand your insurance needs and
+                            buy the right policy without any spam or biased sales tactics.</p>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Do I have to pay to speak to a YesBima Advisor?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No, the consultation with our advisors is completely free. We get paid by the insurance
+                            companies, not by you, and our prices are the same as buying directly.</p>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Will I have a choice of products to select from, or do you offer only a specific policy?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We work with all major insurance providers. We analyze your requirements and offer a curated
+                            list of products that fit your needs best.</p>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        My employer provides health insurance. Should I have a personal insurance plan?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, corporate plans often have lower coverage limits and cease to exist if you leave the
+                            job. A personal plan ensures you stay covered regardless of your employment status.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="logo footer-logo">
+                    <i class="fas fa-shield-alt"></i> YesBima
+                </div>
+                <p class="footer-slogan">Insurance made simple with YesBima</p>
+
+                <div class="footer-contacts">
+                    <div class="contact-box">
+                        <p class="contact-label">For Insurance Queries:</p>
+                        <a href="mailto:support@yesbimainsurance.com">support@yesbimainsurance.com</a>
+                    </div>
+                    <div class="contact-box border-left">
+                        <p class="contact-label">For claims Queries:</p>
+                        <a href="mailto:claims@yesbimainsurance.com">claims@yesbimainsurance.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-bottom">
+                <div class="footer-info">
+                    <p class="copyright">YesBima Insurance © 2024–2027. All Rights Reserved..</p>
+                    <p class="address-text">
+                        In Association with : Prost Insurance Brokers Pvt. Ltd.(OneAssure), 1st floor, 91springboard, MG
+                        Road, Gopala Krishna Complex 45/3, Residency Road, Mahatma Gandhi Rd, Bengaluru, Karnataka
+                        560025.License No. 756, Direct Broker (Life & General).
+                    </p>
+                </div>
+                <div class="footer-disclaimer">
+                    <p>Disclaimer : The information provided on this website is for general informational purpose only
+                        and does not constitute professional advice. For detailed policy information and terms, please
+                        refer to your individual policy document or contact our customer service team.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== GLOBAL BOOKING MODAL ==================== -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Book an Appointment</h2>
+
+            <form id="bookingForm">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact">Contact Number</label>
+                    <div class="input-group">
+                        <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" placeholder="10-digit number"
+                            required>
+                        <button type="button" id="sendOtpBtn" class="btn secondary-btn">Send OTP</button>
+                        <span id="verifiedTick" class="verified-icon" style="display: none;">&#10004;</span>
+                    </div>
+                </div>
+
+                <div class="form-group" id="otpSection" style="display: none;">
+                    <label for="otpInput">Enter OTP</label>
+                    <div class="input-group">
+                        <input type="text" id="otpInput" name="otpInput" placeholder="1234 (for testing)">
+                        <button type="button" id="validateOtpBtn" class="btn secondary-btn">Validate</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="product">Product Type</label>
+                    <select id="product" name="product" required>
+                        <option value="">Select a product...</option>
+                        <option value="Health">Health Insurance</option>
+                        <option value="Term">Term Life Insurance</option>
+                        <option value="Policy Review">Policy Review</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="datetime">Preferred Date & Time</label>
+                    <input type="datetime-local" id="datetime" name="datetime" required>
+                </div>
+
+                <button type="submit" id="submitBtn" class="btn submit-btn" disabled>Book Appointment</button>
+            </form>
+        </div>
+    </div>
+    <!-- ==================== END GLOBAL BOOKING MODAL ==================== -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src='{% static "app_core/js/script.js" %}'></script>
+
+</body>
+
+</html>
