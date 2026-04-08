@@ -267,7 +267,7 @@ $(document).ready(function () {
 
       success: function (response) {
         if (response.status === "success") {
-          alert("Appointment booked successfully!");
+          alert("Appointment booked successfully!" + response.message);
         } else {
           alert("Something went wrong! " + response.message);
         }
