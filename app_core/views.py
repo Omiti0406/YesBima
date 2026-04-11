@@ -6,7 +6,8 @@ from django.db.models import F
 from django.core.exceptions import ValidationError
 from .models import Appointment, Customer
 import json
-# from YesBima.app_core import models
+from app_core.utils.logger import log_info, log_error, log_debug, log_audit
+
 
 # Create your views here.
 def home(request):
@@ -31,16 +32,16 @@ def generate_customer_record(**data):
         return None
 
 def book_appointment(request):
-    print("Received appointment booking request")
+    log_info("Received appointment booking request")
 
     if request.method == "POST":
-        print("Processing POST request for appointment booking")
+        log_info("Processing POST request for appointment booking")
         data = json.loads(request.body)
         customerCreationResult = generate_customer_record(**data)
         if customerCreationResult is None:
-            print("Failed to create or update customer record")
+            log_error("Failed to create or update customer record")
         else:
-            print(f"Customer creation result: {customerCreationResult}")
+            log_info(f"Customer creation result: {customerCreationResult}")
         try:
             name = data.get("name")
             email = data.get("email")
