@@ -15,6 +15,8 @@ def log_error(message, **kwargs):
 def log_debug(message, **kwargs):
     app_logger.debug(message, extra=kwargs)
 
+def log_warning(message, **kwargs):
+    app_logger.warning(message, extra=kwargs)
 
 def log_audit(message, **kwargs):
     audit_logger.info(message, extra=kwargs)

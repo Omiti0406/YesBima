@@ -37,7 +37,7 @@ class Appointment(models.Model):
         max_length=20,
         choices=PRODUCT_CHOICES
     )
-    appointment_datetime = models.DateTimeField()
+    appointment_datetime = models.DateTimeField( )
     created_at = models.DateTimeField(auto_now_add=True)
     customer_type = models.CharField(max_length=20, default="NEW")
 
