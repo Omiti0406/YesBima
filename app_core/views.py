@@ -71,7 +71,7 @@ def book_appointment(request):
         except ValidationError as e:
             log_error(f"Validation error while booking appointment: {e}")
             return JsonResponse({
-                "status": "error",
+                "success": False,
                 "message": f"Validation error: {str(e)}"
             }, status=400)
         
