@@ -266,7 +266,7 @@ $(document).ready(function () {
       },
 
       success: function (response) {
-        if (response.status === "success") {
+        if (response.success === true) {
           alert("Appointment booked successfully!" + response.message);
         } else {
           alert("Something went wrong! " + response.message);
@@ -275,7 +275,7 @@ $(document).ready(function () {
 
       error: function (error) {
         console.log(error);
-        alert("Error occurred!");
+        alert("Error occurred while booking appointment. Please try again later.");
       }
     });
 

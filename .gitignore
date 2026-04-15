@@ -2,3 +2,12 @@
 venv/
 .venv/
 env/
+log/
+logs/
+db.sqlite3
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
