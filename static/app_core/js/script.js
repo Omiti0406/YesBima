@@ -145,6 +145,8 @@ allCtaButtons.forEach(button => {
 span.onclick = function () {
   modal.classList.remove('show');
   document.body.classList.remove('modal-open');
+  const element = document.querySelector('.input-group');
+  element.style.flexDirection = "column";
   resetOtpState();
 }
 
@@ -181,26 +183,26 @@ sendOtpBtn.addEventListener("click", function () {
 // });
 
 // Step 2: Click "Validate"
-validateOtpBtn.addEventListener("click", function () {
-  const enteredOtp = otpInput.value;
-  const correctOtp = "1234"; // Hardcoded for testing purposes
+// validateOtpBtn.addEventListener("click", function () {
+//   const enteredOtp = otpInput.value;
+//   const correctOtp = "1234"; // Hardcoded for testing purposes
 
-  if (enteredOtp === correctOtp) {
-    // Success State
-    otpSection.style.display = "none"; // Hide OTP section
-    sendOtpBtn.style.display = "none"; // Hide Send OTP button
-    verifiedTick.style.display = "inline"; // Show green tick
-    contactInput.readOnly = true; // Prevent changing the number
-    contactInput.style.backgroundColor = "#f0f0f0"; // Grey out input
-    submitBtn.disabled = false; // Enable the Submit button!
-  } else {
-    // Show inline error
-    otpInput.classList.add("input-error");
-    otpError.textContent = "Incorrect OTP. Please try again.";
-    // Error State
-    // alert("Incorrect OTP. Please try again.");
-  }
-});
+//   if (enteredOtp === correctOtp) {
+//     // Success State
+//     otpSection.style.display = "none"; // Hide OTP section
+//     sendOtpBtn.style.display = "none"; // Hide Send OTP button
+//     verifiedTick.style.display = "inline"; // Show green tick
+//     contactInput.readOnly = true; // Prevent changing the number
+//     contactInput.style.backgroundColor = "#f0f0f0"; // Grey out input
+//     submitBtn.disabled = false; // Enable the Submit button!
+//   } else {
+//     // Show inline error
+//     otpInput.classList.add("input-error");
+//     otpError.textContent = "Incorrect OTP. Please try again.";
+//     // Error State
+//     // alert("Incorrect OTP. Please try again.");
+//   }
+// });
 
 // --- Form Submission ---
 bookingForm.addEventListener('submit', function (e) {
@@ -355,6 +357,8 @@ function showSuccessPopup(contactNo, appointmentId, datetime) {
 // --------------------------------------------------------
 closePopupBtn.addEventListener('click', () => {
   successPopup.classList.remove('show');
+  const element = document.querySelector('.your-class-name');
+  element.style.removeProperty('flex-direction');
   // Redirect to main page after a short delay
   // setTimeout(() => {
   //     window.location.href = 'index.html';
@@ -416,3 +420,35 @@ $(document).ready(function () {
   });
 
 });
+
+
+// FIREBASE IMPLEMENTATION
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDoroDvYcYux6c7B_lUQwx7-2oFcaDYyAo",
+  authDomain: "yesbima1.firebaseapp.com",
+  projectId: "yesbima1",
+  storageBucket: "yesbima1.firebasestorage.app",
+  messagingSenderId: "675232366896",
+  appId: "1:675232366896:web:c54e35dfdd3b0aa78488f5"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+// Export auth
+const auth = firebase.auth();
+
+// hide recaptcha
+if (window.recaptchaVerifier) {
+  window.recaptchaVerifier.clear();
+}
+window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+  'recaptcha-container',
+  {
+    size: 'invisible',   // 👈 key change
+    callback: function (response) {
+      console.log("Verified automatically");
+    }
+  }
+);
