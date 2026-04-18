@@ -22,6 +22,7 @@ def generate_customer_record(**data):
     }
     try:
         resp = Customer.objects.create(**cleaned_data)
+        print(f"Response ===>> {resp}")
         log_info(f"Customer record created: {resp.custID}")
         return "UserCreated"
     except IntegrityError:
