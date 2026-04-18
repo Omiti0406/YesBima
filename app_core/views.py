@@ -65,7 +65,7 @@ def book_appointment(request):
             log_info(f"Appointment booked successfully: {resp.appointment_number}")
             return JsonResponse({
                 "success": True,
-                "message": f"Appointment booked successfully! Appointment Number: {resp.appointment_number}"
+                "message": f"Appointment Number: {resp.appointment_number}"
             }, status=201)
         
         except ValidationError as e:
