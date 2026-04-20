@@ -748,9 +748,10 @@
                 <div class="form-group">
                     <label for="contact">Contact Number</label>
                     <div class="input-group">
-                        <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" placeholder="9876543210"
+                        <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" placeholder="9876543210 (for testing)"
                             required>
-                        <button type="button" id="sendOtpBtn" class="btn secondary-btn">Send OTP</button>
+                        <button type="button" id="sendOtpBtn" class="btn secondary-btn" onclick="sendOTP()">Send
+                            OTP</button>
                         <!-- Error message -->
                         <small id="contactError" class="error-text"></small>
                         <span id="verifiedTick" class="verified-icon" style="display: none;">&#10004;</span>
@@ -760,10 +761,13 @@
                 <div class="form-group" id="otpSection" style="display: none;">
                     <label for="otpInput">Enter OTP</label>
                     <div class="input-group">
-                        <input type="text" id="otpInput" name="otpInput" placeholder="1234 (for testing)">
-                        <button type="button" id="validateOtpBtn" class="btn secondary-btn">Validate</button>
+                        <input type="text" id="otpInput" name="otpInput" placeholder="123456 (for testing)">
+                        <button type="button" id="validateOtpBtn" class="btn secondary-btn"
+                            onclick="verifyOTP()">Validate</button>
                         <!-- Error message -->
                         <small id="otpError" class="error-text"></small>
+                        <!-- reCAPTCHA -->
+                        <div id="recaptcha-container"></div>
                     </div>
                 </div>
 
@@ -818,8 +822,18 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
     <!-- Custom JS -->
     <script src='{% static "app_core/js/script.js" %}'></script>
+
+    <!-- Firebase config -->
+    <!-- <script src="{% static 'app_core/js/firebase.js' %}"></script> -->
+    <!-- OTP Logic -->
+    <script src="{% static 'app_core/js/auth.js' %}"></script>
 
 </body>
 
