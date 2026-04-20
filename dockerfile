@@ -4,6 +4,7 @@ FROM python:3.12-slim
 # Environment settings
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+#ENV DJANGO_SETTINGS_MODULE=YesBima.settings.settings_gcp
 
 # Set work directory
 WORKDIR /app
@@ -23,11 +24,11 @@ COPY . .
 # Collect static files
 RUN ["python", "manage.py", "collectstatic", "--noinput" ]
 
-# Apply database migrations
-RUN ["python", "manage.py", "migrate", "--noinput" ]
+# # Apply database migrations
+# RUN ["python", "manage.py", "migrate", "--noinput" ]
 
 # Expose port (Cloud Run uses $PORT)
-CMD ["sh", "-c", "exec gunicorn YesBima.wsgi:application \
+CMD ["sh", "-c", "python manage.py migrate --noinput || true && exec gunicorn YesBima.wsgi:application \
     --bind 0.0.0.0:${PORT:-8080} \
     --workers 3 \
     --threads 2 \

@@ -9,6 +9,10 @@ from .settings_base import *
 
 ALLOWED_HOSTS = ["*"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://yourdomain.com",
+    "https://*.run.app"
+]
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
