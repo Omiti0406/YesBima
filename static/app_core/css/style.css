@@ -176,7 +176,8 @@ h1 { font-size: 3.5rem; line-height: 1.2; font-weight: 600; margin-bottom: 20px;
 /* --- Testimonials --- */
 .split-layout { display: flex; gap: 50px; align-items: flex-start; }
 .sticky-content { flex: 1; position: sticky; top: 100px; }
-.testimonial-grid { flex: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.testimonial-grid { flex: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; background: linear-gradient(160deg, #f0f4ff 0%, #ffffff 50%, #f0fff4 100%);
+    z-index: 1; }
 .subtitle-large { font-size: 1.5rem; color: #888; margin-top: 10px; }
 .review-card { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; margin-bottom: 20px; }
 .stars-gold { color: #ffcc00; font-size: 0.8rem; margin-bottom: 15px; }
@@ -492,6 +493,19 @@ body.modal-open {
   transform: translateY(0);
 }
 
+/* error in input box */
+.error-text {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  display: block;
+}
+
+.input-error {
+  border: 1.5px solid red !important;
+  background-color: #fff5f5;
+}
+
 /* Verified Icon */
 .verified-icon {
   color: #28a745;
@@ -513,7 +527,7 @@ body.modal-open {
 }
 
 /* Submit Button */
-.submit-btn {
+.submit-btn, .popup-close-btn {
   width: 100%;
   background-color: var(--primary-blue);
   color: white;
@@ -543,6 +557,536 @@ body.modal-open {
   background-color: #d0d8e8;
   cursor: not-allowed;
   opacity: 0.6;
+}
+
+/* ========================================== */
+/*         SUCCESS POPUP STYLES               */
+/* ========================================== */
+
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.popup-overlay.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup-box {
+    background: white;
+    padding: 45px 40px 35px 40px;
+    border-radius: 16px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    transform: scale(0.85);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.popup-overlay.show .popup-box {
+    transform: scale(1);
+}
+
+/* ---- Animated SVG Checkmark ---- */
+.check-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.checkmark {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: block;
+    background-color: lightseagreen;
+    stroke-width: 3;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    box-shadow: inset 0px 0px 0px var(--green);
+    animation: fill 0.4s ease-in-out 0.4s forwards,
+               scale 0.3s ease-in-out 0.9s both;
+}
+
+.checkmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2.5;
+    stroke: var(--green);
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    stroke: #fff;
+    stroke-width: 3;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+    100% { stroke-dashoffset: 0; }
+}
+@keyframes scale {
+    0%, 100% { transform: none; }
+    50% { transform: scale3d(1.08, 1.08, 1); }
+}
+@keyframes fill {
+    100% { box-shadow: inset 0px 0px 0px 50px var(--green); }
+}
+
+/* ---- Popup Text ---- */
+.popup-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 8px;
+}
+
+.popup-message {
+    font-size: 0.88rem;
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Booking Summary Box */
+.popup-details {
+    background: #f0faf0;
+    border: 1px solid #c8e6c9;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.popup-details p {
+    font-size: 0.82rem;
+    color: #444;
+    margin-bottom: 6px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.popup-details p:last-child { margin-bottom: 0; }
+
+.popup-details i {
+    color: var(--green);
+    width: 14px;
+}
+
+/* .popup-close-btn {
+    background-color: var(--green);
+    margin-top: 10px;
+} */
+/* .popup-close-btn:hover { background-color: #388e3c; } */
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 480px) {
+    /* .booking-card { padding: 30px 20px; }
+    .otp-box { width: 42px; height: 48px; font-size: 1.2rem; } */
+    .popup-box { padding: 35px 25px 25px 25px; }
+}
+
+/* ============================================
+   COMPARISON SECTION
+   ============================================ */
+
+.comparison-section {
+    background: linear-gradient(160deg, #f0f4ff 0%, #ffffff 50%, #f0fff4 100%);
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+/* --- Header --- */
+.comparison-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-badge {
+    display: inline-block;
+    background: #e8f0fe;
+    color: var(--primary-blue);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+}
+
+.comparison-header h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 14px;
+}
+
+.text-muted-strike {
+    color: #aaa;
+    text-decoration: line-through;
+    text-decoration-color: #ff4d4d;
+    text-decoration-thickness: 3px;
+}
+
+.comparison-subtitle {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.8;
+}
+
+/* --- Comparison Card --- */
+.comparison-card {
+    background: #ffffff;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e8edf5;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* --- Rows --- */
+.comp-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: stretch;
+    transition: background 0.2s;
+}
+
+.comp-row:not(.comp-head):hover {
+    background-color: #fafbff;
+}
+
+.comp-row:not(.comp-head):not(:last-child) {
+    border-bottom: 1px solid #f0f2f7;
+}
+
+/* --- Header Row --- */
+.comp-head {
+    background: #f8f9fc;
+    border-bottom: 2px solid #e8edf5;
+}
+
+/* --- Cells --- */
+.comp-cell {
+    padding: 22px 28px;
+    display: flex;
+    align-items: center;
+}
+
+/* Feature column */
+.feature-col {
+    border-right: 1px solid #f0f2f7;
+}
+
+.feature-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.feature-info span {
+    font-weight: 500;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.feature-icon-wrap {
+    width: 36px;
+    height: 36px;
+    background: #eef2ff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+/* Industry column */
+.industry-col {
+    border-right: 1px solid #f0f2f7;
+    justify-content: center;
+}
+
+/* Pillow highlighted column */
+.highlighted-col {
+    background: linear-gradient(180deg, #f0f7ff 0%, #f5fff8 100%);
+    justify-content: center;
+}
+
+/* Header labels */
+.col-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.col-label i {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.industry-label {
+    color: #888;
+}
+.industry-label i { color: #aaa; }
+
+.pillow-label {
+    color: #0052cc;
+}
+.pillow-label i { color: var(--primary-blue); }
+
+/* Recommended badge */
+.recommended-badge {
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+/* --- Chips --- */
+.bad-chip,
+.good-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 14px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.bad-chip {
+    background: #fff0f0;
+    color: #c0392b;
+    border: 1px solid #ffd5d5;
+}
+
+.bad-chip i {
+    color: #e74c3c;
+    font-size: 0.9rem;
+}
+
+.good-chip {
+    background: #f0fff4;
+    color: #1e7e34;
+    border: 1px solid #c3e6cb;
+}
+
+.good-chip i {
+    color: #28a745;
+    font-size: 0.9rem;
+}
+
+/* --- Bottom CTA --- */
+.comparison-cta {
+    text-align: center;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.comparison-cta p {
+    font-size: 1.05rem;
+    color: #555;
+}
+
+.comparison-cta strong {
+    color: var(--primary-blue);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .comparison-header h2 {
+        font-size: 2rem;
+    }
+
+    .comp-cell {
+        padding: 16px 14px;
+    }
+
+    .feature-icon-wrap {
+        display: none;
+    }
+
+    .feature-info span {
+        font-size: 0.82rem;
+    }
+
+    .bad-chip,
+    .good-chip {
+        font-size: 0.72rem;
+        padding: 5px 10px;
+        gap: 5px;
+    }
+
+    .bad-chip i,
+    .good-chip i {
+        display: none;
+    }
+
+    .col-label span:first-of-type {
+        font-size: 0.8rem;
+    }
+
+    .recommended-badge {
+        font-size: 0.58rem;
+        padding: 2px 7px;
+    }
+}
+
+@media (max-width: 480px) {
+    .comp-cell {
+        padding: 14px 10px;
+    }
+    .comparison-header h2 {
+        font-size: 1.7rem;
+    }
+}
+
+/* ============================================
+   INFINITE LOGO CAROUSEL for PARTNERS SECTION
+   ============================================ */
+
+.logos-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 30px 0;
+    margin-top: 40px;
+    background: #ffffff;
+}
+
+/* Fade gradients on left and right edges */
+.carousel-fade-left,
+.carousel-fade-right {
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.carousel-fade-left {
+    left: 0;
+    background: linear-gradient(to right, #ffffff 0%, transparent 100%);
+}
+
+.carousel-fade-right {
+    right: 0;
+    background: linear-gradient(to left, #ffffff 0%, transparent 100%);
+}
+
+/* The scrolling track */
+.logos-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: scrollLogos 28s linear infinite;
+    will-change: transform;
+}
+
+/* Pause on hover */
+.logos-carousel-wrapper:hover .logos-track {
+    animation-play-state: paused;
+}
+
+/* Each individual logo card */
+.logo-slide {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 24px;
+    background: #fff;
+    border: 1.5px solid #e8edf5;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    cursor: default;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    white-space: nowrap;
+    min-width: 180px;
+    user-select: none;
+}
+
+.logo-slide:hover {
+    border-color: #b3cfff;
+    box-shadow: 0 6px 20px rgba(0, 102, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+/* Logo image */
+.logo-slide img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    border-radius: 6px;
+    flex-shrink: 0;
+    background: #f5f7ff;
+    padding: 4px;
+    border: 1px solid #eee;
+}
+
+/* Company name */
+.logo-slide span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    letter-spacing: 0.2px;
+}
+
+/* Scroll animation */
+@keyframes scrollLogos {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .logo-slide {
+        min-width: 150px;
+        padding: 12px 18px;
+    }
+    .logo-slide img {
+        width: 28px;
+        height: 28px;
+    }
+    .logo-slide span {
+        font-size: 0.8rem;
+    }
+    .carousel-fade-left,
+    .carousel-fade-right {
+        width: 60px;
+    }
 }
 
 /* ================= RESPONSIVE ================= */

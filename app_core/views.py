@@ -22,6 +22,7 @@ def generate_customer_record(**data):
     }
     try:
         resp = Customer.objects.create(**cleaned_data)
+        print(f"Response ===>> {resp}")
         log_info(f"Customer record created: {resp.custID}")
         return "UserCreated"
     except IntegrityError:
@@ -65,7 +66,7 @@ def book_appointment(request):
             log_info(f"Appointment booked successfully: {resp.appointment_number}")
             return JsonResponse({
                 "success": True,
-                "message": f"Appointment booked successfully! Appointment Number: {resp.appointment_number}"
+                "message": f"Appointment Number: {resp.appointment_number}"
             }, status=201)
         
         except ValidationError as e:

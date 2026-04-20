@@ -151,16 +151,34 @@ span.onclick = function () {
 // --- OTP Logic ---
 
 // Step 1: Click "Send OTP"
+const contactError = document.getElementById("contactError");
 sendOtpBtn.addEventListener("click", function () {
-  if (contactInput.value.length >= 10) {
-    // Reveal the OTP input section
+  const contactValue = contactInput.value.trim();
+  // Reset previous error state
+  contactInput.classList.remove("input-error");
+  contactError.textContent = "";
+  // Validate: exactly 10 digits
+  const isValid = /^[0-9]{10}$/.test(contactValue);
+
+  if (isValid) {
     otpSection.style.display = "block";
-    sendOtpBtn.textContent = "Resend OTP"; // Change button text
-    alert("For testing, your OTP is: 1234");
+    sendOtpBtn.textContent = "Resend OTP";
   } else {
-    alert("Please enter a valid 10-digit contact number first.");
+    // Show inline error
+    contactInput.classList.add("input-error");
+    contactError.textContent = "Please enter a valid 10-digit contact number";
   }
 });
+// sendOtpBtn.addEventListener("click", function () {
+//   if (contactInput.value.length == 10) {
+//     // Reveal the OTP input section
+//     otpSection.style.display = "block";
+//     sendOtpBtn.textContent = "Resend OTP"; // Change button text
+//     // alert("For testing, your OTP is: 1234");
+//   } else {
+//     alert("Please enter a valid 10-digit contact number first.");
+//   }
+// });
 
 // Step 2: Click "Validate"
 validateOtpBtn.addEventListener("click", function () {
@@ -176,15 +194,18 @@ validateOtpBtn.addEventListener("click", function () {
     contactInput.style.backgroundColor = "#f0f0f0"; // Grey out input
     submitBtn.disabled = false; // Enable the Submit button!
   } else {
+    // Show inline error
+    otpInput.classList.add("input-error");
+    otpError.textContent = "Incorrect OTP. Please try again.";
     // Error State
-    alert("Incorrect OTP. Please try again.");
+    // alert("Incorrect OTP. Please try again.");
   }
 });
 
 // --- Form Submission ---
 bookingForm.addEventListener('submit', function (e) {
   e.preventDefault();
-  alert('Form submitted successfully!');
+  // alert('Form submitted successfully!');
 
   // Reset the form and the custom UI states
   modal.classList.remove('show');
@@ -240,6 +261,111 @@ function setDateConstraints() {
 }
 
 
+// ============================================
+// LOGO CAROUSEL - Touch drag support (mobile)
+// ============================================
+(function () {
+  const track = document.querySelector('.logos-track');
+  if (!track) return;
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+  let autoScrollPaused = false;
+
+  // Mouse drag
+  track.addEventListener('mousedown', (e) => {
+    isDown = true;
+    track.style.animationPlayState = 'paused';
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.parentElement.scrollLeft;
+  });
+
+  track.addEventListener('mouseleave', () => {
+    isDown = false;
+    track.style.animationPlayState = 'running';
+  });
+
+  track.addEventListener('mouseup', () => {
+    isDown = false;
+    track.style.animationPlayState = 'running';
+  });
+
+  // Touch drag (mobile)
+  track.addEventListener('touchstart', (e) => {
+    track.style.animationPlayState = 'paused';
+    startX = e.touches[0].pageX;
+  }, { passive: true });
+
+  track.addEventListener('touchend', () => {
+    track.style.animationPlayState = 'running';
+  });
+
+  // Pause when tab is hidden (saves CPU)
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      track.style.animationPlayState = 'paused';
+    } else {
+      track.style.animationPlayState = 'running';
+    }
+  });
+})();
+
+
+
+
+// Optional: click overlay to close
+successPopup.addEventListener('click', (e) => {
+  if (e.target === successPopup) {
+    successPopup.classList.remove('show');
+  }
+});
+
+
+// --------------------------------------------------------
+// Show Success Popup with booking details
+// --------------------------------------------------------
+function showSuccessPopup(contactNo, appointmentId, datetime) {
+  // Format date nicely
+  const dateObj = new Date(datetime);
+  const formattedDate = dateObj.toLocaleString('en-IN', {
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
+  // Inject booking details into popup
+  popupDetails.innerHTML = `
+            <p><i class="fas fa-phone-alt"></i> ${contactNo}</p>
+            <p><i class="fas fa-shield-alt"></i> ${appointmentId}</p>
+            <p><i class="fas fa-calendar-alt"></i> ${formattedDate}</p>
+        `;
+
+  // Trigger popup (small delay so animation replays cleanly)
+  requestAnimationFrame(() => {
+    successPopup.classList.add('show');
+  });
+}
+
+// --------------------------------------------------------
+// Close Popup → Go back to home
+// --------------------------------------------------------
+closePopupBtn.addEventListener('click', () => {
+  successPopup.classList.remove('show');
+  // Redirect to main page after a short delay
+  // setTimeout(() => {
+  //     window.location.href = 'index.html';
+  // }, 400);
+});
+
+// validate each field before ajax call
+function isValid(value) {
+  return value !== null && value.trim() !== '';
+}
+
 // --- capture the appointment details from the form and make and ajax call to the backend to save the appointment in the database ---
 $(document).ready(function () {
 
@@ -255,30 +381,38 @@ $(document).ready(function () {
       dateTime: $("#datetime").val(),
     };
 
-    $.ajax({
-      url: "/book-appointment/",
-      type: "POST",
-      data: JSON.stringify(data),
-      contentType: "application/json",
+    if (
+      isValid(data.name) &&
+      isValid(data.contactNo) &&
+      isValid(data.email) &&
+      isValid(data.productType) &&
+      isValid(data.dateTime)
+    ) {
+      $.ajax({
+        url: "/book-appointment/",
+        type: "POST",
+        data: JSON.stringify(data),
+        contentType: "application/json",
 
-      headers: {
-        "X-CSRFToken": csrfToken
-      },
+        headers: {
+          "X-CSRFToken": csrfToken
+        },
 
-      success: function (response) {
-        if (response.success === true) {
-          alert("Appointment booked successfully!" + response.message);
-        } else {
-          alert("Something went wrong! " + response.message);
+        success: function (response) {
+          if (response.success === true) {
+            showSuccessPopup(data.contactNo, response.message, data.dateTime);
+            // alert("Appointment booked successfully!" + response.message);
+          } else {
+            alert("Something went wrong! " + response.message);
+          }
+        },
+
+        error: function (error) {
+          console.log(error);
+          alert("Error occurred while booking appointment. Please try again later.");
         }
-      },
-
-      error: function (error) {
-        console.log(error);
-        alert("Error occurred while booking appointment. Please try again later.");
-      }
-    });
-
+      });
+    }
   });
 
 });

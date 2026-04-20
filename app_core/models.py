@@ -2,6 +2,9 @@ from datetime import datetime, date
 from django.db import models, IntegrityError
 import random
 import string
+import traceback
+from app_core.utils.logger import log_info, log_error, log_debug, log_warning, log_audit
+
 
 def generate_appointment_number() -> str:
     today = date.today().strftime("%y%m%d")
@@ -50,13 +53,12 @@ class Appointment(models.Model):
                     return
                 except IntegrityError as e:
                     if "app_core_appointment.appointment_number" in str(e):
-                        print(f"Appointment number generation failed: {self.appointment_number} --> {e}! retrying...")
+                        log_warning(f"Appointment number generation failed: {self.appointment_number} --> {e}! retrying...")
                         continue
                     else:
                         raise e
                 except Exception as e:
-                    print(f"Unexpected error during appointment creation: {e}")
-                    raise f"Unexpected error during appointment creation: {e}"
+                    raise f"Unexpected error during appointment creation: {traceback.format_exc()}"
         else:
             super().save(*args, **kwargs)
 
@@ -74,7 +76,7 @@ def generate_customer_id():
 
 class Customer(models.Model):
     custID = models.CharField(
-        max_length=6,
+        max_length=10,
         unique=True,
         editable=False,
         null=True,
@@ -94,13 +96,13 @@ class Customer(models.Model):
                     super().save(*args, **kwargs)
                     return
                 except IntegrityError as e:
-                    if "app_core_customer.phone" in str(e):
+                    if "phone" in str(e):
                         raise IntegrityError # This means the phone number already exists, so we just update the repeat count
                     else:
-                        print(f"CUST ID generation failed: {self.custID} --> {e}")
+                        log_warning(f"CUST ID generation failed: {self.custID} --> {e}")
                         continue
                 except Exception as e:
-                    print(f"Unexpected error during customer save: {e}")
+                    raise Exception(f"Unexpected error during customer save!!\n{traceback.format_exc()}")
         else:
             super().save(*args, **kwargs)
 
