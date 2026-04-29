@@ -127,6 +127,8 @@ const otpSection = document.getElementById("otpSection");
 const otpInput = document.getElementById("otpInput");
 const validateOtpBtn = document.getElementById("validateOtpBtn");
 const verifiedTick = document.getElementById("verifiedTick");
+const otpError = document.getElementById("otpError");
+const contactError = document.getElementById("contactError");
 
 // --- Modal Open/Close Logic ---
 
@@ -151,7 +153,6 @@ span.onclick = function () {
 // --- OTP Logic ---
 
 // Step 1: Click "Send OTP"
-const contactError = document.getElementById("contactError");
 sendOtpBtn.addEventListener("click", function () {
   const contactValue = contactInput.value.trim();
   // Reset previous error state

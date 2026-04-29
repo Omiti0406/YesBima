@@ -58,7 +58,7 @@ class Appointment(models.Model):
                     else:
                         raise e
                 except Exception as e:
-                    raise f"Unexpected error during appointment creation: {traceback.format_exc()}"
+                    raise Exception(f"Unexpected error during appointment creation: {traceback.format_exc()}")
         else:
             super().save(*args, **kwargs)
 
