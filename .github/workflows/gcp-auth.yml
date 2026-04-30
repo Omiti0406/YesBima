@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: google-github-actions/auth@v2
         with:
-          workload_identity_provider: projects/894027204902/locations/global/workloadIdentityPools/github-pool-1/providers/github-pool-1
+          workload_identity_provider: projects/894027204902/locations/global/workloadIdentityPools/github-pool-1/providers/github-provider
           service_account: roboticadmin@project-4f9b9827-0749-46e9-8b6.iam.gserviceaccount.com
 
       - run: gcloud auth list
