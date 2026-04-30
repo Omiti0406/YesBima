@@ -17,3 +17,4 @@ jobs:
           service_account: roboticadmin@project-4f9b9827-0749-46e9-8b6.iam.gserviceaccount.com
 
       - run: gcloud auth list
+      - run: gcloud config list
