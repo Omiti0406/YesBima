@@ -1,4 +1,4 @@
-name: YesBima UAT deployment
+name: YesBima DEV Pipeline
 
 on:
   workflow_dispatch:
