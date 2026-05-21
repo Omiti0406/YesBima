@@ -1,131 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YesBima - Insurance Made Simple</title>
+    
     {% load static %}
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
+    
     <link rel="stylesheet" href='{% static "app_core/css/style.css" %}'>
 </head>
 
 <body>
 
-    <!-- ==================== PART 1: HERO & DARK SECTION ==================== -->
-    <div class="dark-wrapper">
-        <div class="stars"></div>
+    <div class="container">
+        <header>
+            <!-- <div class="logo"><i class="fas fa-shield-alt"></i> YesBima</div> -->
+            <div class="logo"><img src="../../static/app_core/images/yesbima-logo.png" alt="YesBima Logo" class="logo-image">
+                <span> YesBima </span> </div>
+        </header>
 
-        <!-- Header -->
-        <div class="container">
-            <header>
-                <div class="logo">
-                    <i class="fas fa-shield-alt"></i> YesBima
-                </div>
-            </header>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-text reveal active">
+                <h1>Insurance was never <span class="highlight-text">this honest.</span><br /> That’s the problem.</h1>
+                <p class="subtitle">For years, you were sold policies you didn’t need. We’re here to make sure it never happens again.</p>
+                <button class="cta-btn openBookingBtn">Get Real Advice <i class="fas fa-arrow-right"></i></button>
+                <div class="social-proof"><i class="fas fa-check-circle"></i> 5000+ families chose clarity over sales tactics</div>
+            </div>
 
-            <!-- Hero Section -->
-            <section class="hero">
-                <div class="hero-text">
-                    <h1>Insurance was never this honest. <br /> That’s the problem.</h1>
-                    <p class="subtitle">
-                        For years, you were sold policies you didn’t need. <br /> We’re here to make sure it never
-                        happens again.
-                    </p>
-                    <button id="openBookingBtn" class="cta-btn">Get Real Advice <i
-                            class="fas fa-arrow-right"></i></button>
-
-                    <div class="social-proof"><i class="fas fa-check-square"></i> 5000+ families chose clarity over
-                        sales tactics</div>
-                </div>
-
-                <div class="hero-card-section">
-                    <div class="white-card">
-                        <div class="card-content">
-                            <h2>Professional<br>Advice</h2>
-                            <div class="chat-bubble"><i class="fas fa-comment-dots"></i> Which life insurance is best
-                                for me?</div>
-                            <div class="partner-logo"><span style="color:#0077b5">SBI</span> Life <div
-                                    class="partner-bar"></div>
-                            </div>
-                            <div class="partner-logo"><span style="color:#cc0000">RELIANCE</span>
-                                <div class="partner-bar"></div>
-                            </div>
-                        </div>
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                            alt="Advisor" class="person-image">
-                    </div>
-                    <div class="trust-grid">
-                        <div class="trust-title">Trusted by Thousands — here's why</div>
-                        <div class="trust-item"><i class="fas fa-check"></i> No agents. No pressure</div>
-                        <div class="trust-item"><i class="fas fa-check"></i> No commissions driving recommendations
-                        </div>
-                        <div class="trust-item"><i class="fas fa-check"></i> No spam. Ever</div>
-                        <div class="trust-item"><i class="fas fa-check"></i> Unbiased advice</div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Clouds Divider -->
-        <div class="clouds"></div>
-
-        <!-- Services Section (Dark Blue) -->
-        <section class="services-section">
-            <div class="container">
-                <div class="section-header-left">
-                    <h3 class="light-sub">We offer</h3>
-                    <h2>Unbiased advice on</h2>
-                </div>
-                <div class="cards-grid">
-                    <div class="service-card reveal">
-                        <div class="icon-circle"><i class="fas fa-stethoscope"></i></div>
-                        <div class="card-text">
-                            <h4>Health Insurance</h4>
-                            <p>YesBima helps you protect what matters - you and your family.</p>
+            <div class="hero-visual reveal delay-1 active">
+                <!-- <div class="white-card">
+                    <div>
+                        <h2 style="color: #0F172A; font-size: 1.5rem;">Professional Advice</h2>
+                        <div class="chat-bubble"><i class="fas fa-comment-dots"></i> Which life insurance is best?</div>
+                        <div>
+                            <div class="partner-logo">SBI Life</div>
+                            <div class="partner-logo">RELIANCE</div>
                         </div>
                     </div>
-                    <div class="service-card reveal delay-1">
-                        <div class="icon-circle"><i class="fas fa-shield-halved"></i></div>
-                        <div class="card-text">
-                            <h4>Term Life Insurance</h4>
-                            <p>YesBima helps you secure your family's future.</p>
-                        </div>
-                    </div>
-                    <div class="service-card reveal delay-2">
-                        <div class="icon-circle"><i class="fas fa-file-magnifying-glass"></i></div>
-                        <div class="card-text">
-                            <h4>Policy Review</h4>
-                            <p>YesBima helps you spot gaps and fix them fast.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="center-btn-wrapper reveal">
-                    <button class="cta-btn 1secondary-btn">Book A Free Call Now! <i
-                            class="far fa-calendar-alt"></i></button>
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Advisor" class="person-image">
+                </div> -->
+                <div class="trust-grid">
+                    <div style="color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase;">Trusted by Thousands</div>
+                    <div><i class="fas fa-check"></i> No pushy agents</div>
+                    <div><i class="fas fa-check"></i> Zero commissions driving advice</div>
+                    <div><i class="fas fa-check"></i> 100% Unbiased recommendations</div>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- ==================== PART 2: LIGHT SECTIONS ==================== -->
+    <section class="section-padding">
+        <div class="container text-center reveal">
+            <h3 class="highlight-text" style="text-transform: uppercase; font-size: 0.9rem;">We Offer</h3>
+            <h2>Unbiased advice on what matters</h2>
+            
+            <div class="cards-grid">
+                <div class="glass-card reveal">
+                    <div class="icon-circle" style="margin: 0 auto 20px;"><i class="fas fa-stethoscope"></i></div>
+                    <h4>Health Insurance</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px;">Protect what matters most - you and your family.</p>
+                </div>
+                <div class="glass-card reveal delay-1">
+                    <div class="icon-circle" style="margin: 0 auto 20px;"><i class="fas fa-shield-halved"></i></div>
+                    <h4>Term Life Insurance</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px;">Secure your family's future with clarity.</p>
+                </div>
+                <div class="glass-card reveal delay-2">
+                    <div class="icon-circle" style="margin: 0 auto 20px;"><i class="fas fa-magnifying-glass"></i></div>
+                    <h4>Policy Review</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px;">Spot gaps in existing policies and fix them fast.</p>
+                </div>
+            </div>
+            <button class="cta-btn secondary-btn openBookingBtn">Book A Free Call Now <i class="far fa-calendar-alt"></i></button>
+        </div>
+    </section>
 
-    <!-- PROCESS TIMELINE SECTION -->
-    <section class="white-section process-section">
+    <!-- Why YesBima Section -->
+    <section class="why-section">
         <div class="container">
-            <h2 class="section-title reveal">Here’s how we do it</h2>
+            <div class="section-header reveal">
+                <h2>Why YesBima?</h2>
+                <p class="subtitle-light">Because insurance was never meant to feel like a risk.</p>
+            </div>
+            <div class="features-grid">
+                <div class="glass-card reveal" style="padding: 30px;">
+                    <div class="icon-circle"><i class="fas fa-bullseye"></i></div>
+                    <h3>Insurance that fits you</h3>
+                    <p>Not what earns commission—what you truly need.</p>
+                </div>
+                <div class="glass-card reveal delay-1" style="padding: 30px;">
+                    <div class="icon-circle"><i class="fas fa-shield-alt"></i></div>
+                    <h3>We are your shield</h3>
+                    <p>We stand between you and the insurer to prevent unfair rejections.</p>
+                </div>
+                <div class="glass-card reveal delay-2" style="padding: 30px;">
+                    <div class="icon-circle"><i class="fas fa-headset"></i></div>
+                    <h3>Real support</h3>
+                    <p>No scripted bots. Just real people helping you out.</p>
+                </div>
+                <div class="glass-card reveal delay-3" style="padding: 30px;">
+                    <div class="icon-circle"><i class="fas fa-eye"></i></div>
+                    <h3>Radical transparency</h3>
+                    <p>If you don’t understand it, don’t buy it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <div class="timeline-container reveal">
+    <!-- Process Section -->
+    <!-- <section class="section-padding process" style="background: rgba(255,255,255,0.02);">
+        <div class="container">
+            <h2 class="text-center reveal">Here’s how we do it</h2>
+            
+            <div class="timeline-container reveal delay-1">
                 <div class="timeline-line"></div>
                 <div class="timeline-step">
                     <div class="step-marker active">1</div>
                     <div class="step-content">
                         <h3>Expose & Understand</h3>
-                        <p>We break down your needs and decode policies—what matters and what doesn’t.</p>
+                        <p>We decode policies—what matters and what doesn’t.</p>
                     </div>
                 </div>
                 <div class="timeline-step">
@@ -139,603 +136,190 @@
                     <div class="step-marker">3</div>
                     <div class="step-content">
                         <h3>Stay When It Matters</h3>
-                        <p>We stay with you through claims and real-life situations.</p>
+                        <p>We stay with you through claims and real situations.</p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- WHY YesBima SECTION -->
-    <section class="white-section why-yesbima-section">
-        <div class="container">
-            <div class="header-group reveal">
-                <h2 class="text-blue">Why YesBima?</h2>
-                <p class="subtitle-dark">Because insurance was never meant to feel like a risk.</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-box reveal">
-                    <div class="icon-circle-blue"><i class="fas fa-user-shield"></i></div>
-                    <h3>Insurance that actually fits you</h3>
-                    <p>Not what earns commission—what you truly need.</p>
-                </div>
-                <div class="feature-box reveal delay-1">
-                    <div class="icon-circle-blue"><i class="fas fa-fist-raised"></i></div>
-                    <h3>We stand between you and rejection</h3>
-                    <p>We ensure you’re not denied what’s yours.</p>
-                </div>
-                <div class="feature-box reveal delay-2">
-                    <div class="icon-circle-blue"><i class="fas fa-headset"></i></div>
-                    <h3>Real support. Not scripted replies</h3>
-                    <p>No bots. Just real people.</p>
-                </div>
-                <div class="feature-box reveal delay-3">
-                    <div class="icon-circle-blue"><i class="fas fa-check-circle"></i></div>
-                    <h3>Radical transparency</h3>
-                    <p>If you don’t understand it, don’t buy it.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PARTNERS & STATS SECTION -->
-    <!-- <section class="white-section partners-section">
-        <div class="container">
-            <div class="header-group reveal">
-                <h2 class="text-dark">We offer you the best</h2>
-                <p class="subtitle-dark">We only collaborate with the <span class="squiggly-blue">top Insurance
-                        providers</span></p>
-            </div>
-            <div class="logos-row reveal">
-                <div class="logo-box">BAJAJ Allianz</div>
-                <div class="logo-box">HDFC ERGO</div>
-                <div class="logo-box">TATA AIA</div>
-                <div class="logo-box">ICICI Lombard</div>
-                <div class="logo-box">Max Life</div>
-                <div class="logo-box">Care Health</div>
-            </div>
-            <div class="spacer-50"></div>
-            <div class="header-group reveal">
-                <h2 class="text-dark">Benefits of plans that we curate</h2>
-                <p class="subtitle-dark"><span class="squiggly-blue">We stand by you at every step</span> — and select
-                    only the best plans for you</p>
-            </div>
-            <div class="stats-container reveal">
-                <div class="stat-item">
-                    <h3>15,000+</h3>
-                    <p>Cashless hospitals</p>
-                </div>
-                <div class="stat-item border-sides">
-                    <h3>24x7</h3>
-                    <p>Claims support</p>
-                </div>
-                <div class="stat-item">
-                    <h3>₹75,000</h3>
-                    <p>worth of tax saving</p>
                 </div>
             </div>
         </div>
     </section> -->
 
-    <!-- PARTNERS & STATS SECTION -->
-    <section class="white-section partners-section">
+    <!-- new process -->
+    <section class="section-padding process-section" style="background: rgba(255, 255, 255, 0.01);">
         <div class="container">
-            <div class="header-group reveal">
-                <h2 class="text-dark">We offer you the best</h2>
-                <p class="subtitle-dark">We only collaborate with the <span class="squiggly-blue">top Insurance
-                        providers</span></p>
+            <div class="section-header center reveal">
+                <h2>Here’s how we do it</h2>
+            </div>
+            
+            <div class="animated-timeline reveal">
+                <div class="timeline-line-wrapper">
+                    <div class="timeline-base-line"></div>
+                    <div class="timeline-progress-line"></div>
+                </div>
+
+                <div class="t-step">
+                    <div class="t-step-marker">1</div>
+                    <div class="t-step-content">
+                        <h3>Expose & Understand</h3>
+                        <p>We decode policies—what matters and what doesn't.</p>
+                    </div>
+                </div>
+
+                <div class="t-step">
+                    <div class="t-step-marker">2</div>
+                    <div class="t-step-content">
+                        <h3>Advise, Not Push</h3>
+                        <p>No scripts. No targets. Just honest recommendations.</p>
+                    </div>
+                </div>
+
+                <div class="t-step">
+                    <div class="t-step-marker">3</div>
+                    <div class="t-step-content">
+                        <h3>Stay When It Matters</h3>
+                        <p>We stay with you through claims and real situations.</p>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- =============================================
-         INFINITE LOGO CAROUSEL (Full Width)
-         ============================================= -->
-        <div class="logos-carousel-wrapper reveal">
+    <!-- Comparison Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center reveal">
+                <h3 class="highlight-text" style="text-transform: uppercase; font-size: 0.9rem;">Why Choose Us</h3>
+                <h2>YesBima vs The Industry</h2>
+            </div>
+            
+            <div class="comparison-wrapper reveal delay-1">
+                <div class="comp-table">
+                <div class="comp-row comp-head">
+                    <div class="comp-cell">Feature</div>
+                    <div class="comp-cell industry-col">Industry Standard</div>
+                    <div class="comp-cell pillow-col"><i class="fas fa-shield-alt"></i> YesBima</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-cell"><i class="fas fa-comments" style="margin-right: 10px; color: var(--text-muted);"></i> Advice</div>
+                    <div class="comp-cell industry-col"><i class="fas fa-times"></i> Commission-driven</div>
+                    <div class="comp-cell pillow-col"><i class="fas fa-check"></i> Need-driven</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-cell"><i class="fas fa-eye" style="margin-right: 10px; color: var(--text-muted);"></i> Transparency</div>
+                    <div class="comp-cell industry-col"><i class="fas fa-times"></i> Hidden Charges</div>
+                    <div class="comp-cell pillow-col"><i class="fas fa-check"></i> 100% Clear</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-cell"><i class="fas fa-bolt" style="margin-right: 10px; color: var(--text-muted);"></i> Sales Tactics</div>
+                    <div class="comp-cell industry-col"><i class="fas fa-times"></i> High Pressure</div>
+                    <div class="comp-cell pillow-col"><i class="fas fa-check"></i> Zero Pressure</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-cell"><i class="fas fa-file-invoice" style="margin-right: 10px; color: var(--text-muted);"></i> Claims Support</div>
+                    <div class="comp-cell industry-col"><i class="fas fa-times"></i> Weak Support</div>
+                    <div class="comp-cell pillow-col"><i class="fas fa-check"></i> Full 24/7 Support</div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <!-- Fade edges -->
+    <!-- Partners -->
+    <section class="section-padding" style="background: rgba(255,255,255,0.01);">
+        <div class="container text-center reveal">
+            <h2>We collaborate with the best</h2>
+        </div>
+        <div class="logos-carousel-wrapper reveal delay-1">
             <div class="carousel-fade-left"></div>
             <div class="carousel-fade-right"></div>
-
             <div class="logos-track">
-                <!-- Original Set -->
-                <div class="logo-slide">
-                    <img src="https://www.bajajallianz.com/favicon.ico" alt="Bajaj Allianz"
-                        onerror="this.src='https://ui-avatars.com/api/?name=BA&background=fff8e1&color=f57c00&bold=true&size=40'">
-                    <span>Bajaj Allianz</span>
-                </div>
-                <div class="logo-slide">
-                    <img src="https://www.hdfcergo.com/favicon.ico" alt="HDFC ERGO"
-                        onerror="this.src='https://ui-avatars.com/api/?name=HE&background=e3f2fd&color=1565c0&bold=true&size=40'">
-                    <span>HDFC ERGO</span>
-                </div>
-                <div class="logo-slide">
-                    <img src="https://www.tataaia.com/favicon.ico" alt="TATA AIA"
-                        onerror="this.src='https://ui-avatars.com/api/?name=TA&background=fce4ec&color=c62828&bold=true&size=40'">
-                    <span>TATA AIA</span>
-                </div>
-                <div class="logo-slide">
-                    <img src="https://www.icicilombard.com/favicon.ico" alt="ICICI Lombard"
-                        onerror="this.src='https://ui-avatars.com/api/?name=IL&background=e8f5e9&color=2e7d32&bold=true&size=40'">
-                    <span>ICICI Lombard</span>
-                </div>
-                <div class="logo-slide">
-                    <img src="https://www.maxlifeinsurance.com/favicon.ico" alt="Max Life"
-                        onerror="this.src='https://ui-avatars.com/api/?name=ML&background=ede7f6&color=4527a0&bold=true&size=40'">
-                    <span>Max Life</span>
-                </div>
-                <div class="logo-slide">
-                    <img src="https://www.careinsurance.com/favicon.ico" alt="Care Health"
-                        onerror="this.src='https://ui-avatars.com/api/?name=CH&background=e0f7fa&color=00695c&bold=true&size=40'">
-                    <span>Care Health</span>
-                </div>
-                <div class="logo-slide">
-                    <img src="https://www.hdfclife.com/favicon.ico" alt="HDFC Life"
-                        onerror="this.src='https://ui-avatars.com/api/?name=HL&background=e3f2fd&color=0d47a1&bold=true&size=40'">
-                    <span>HDFC Life</span>
-                </div>
-                <div class="logo-slide">
-                    <img src="https://www.iciciprulife.com/favicon.ico" alt="ICICI Prudential"
-                        onerror="this.src='https://ui-avatars.com/api/?name=IP&background=f3e5f5&color=6a1b9a&bold=true&size=40'">
-                    <span>ICICI Prudential</span>
-                </div>
-                <div class="logo-slide">
-                    <img src="https://www.starhealth.in/favicon.ico" alt="Star Health"
-                        onerror="this.src='https://ui-avatars.com/api/?name=SH&background=fff3e0&color=e65100&bold=true&size=40'">
-                    <span>Star Health</span>
-                </div>
-                <div class="logo-slide">
-                    <img src="https://www.reliancegeneral.co.in/favicon.ico" alt="Reliance General"
-                        onerror="this.src='https://ui-avatars.com/api/?name=RG&background=ffebee&color=b71c1c&bold=true&size=40'">
-                    <span>Reliance General</span>
-                </div>
-
-                <!-- Duplicated Set for seamless infinite scroll -->
-                <div class="logo-slide">
-                    <img src="https://www.bajajallianz.com/favicon.ico" alt="Bajaj Allianz"
-                        onerror="this.src='https://ui-avatars.com/api/?name=BA&background=fff8e1&color=f57c00&bold=true&size=40'">
-                    <span>Bajaj Allianz</span>
-                </div>
-                <div class="logo-slide">
-                    <img src="https://www.hdfcergo.com/favicon.ico" alt="HDFC ERGO"
-                        onerror="this.src='https://ui-avatars.com/api/?name=HE&background=e3f2fd&color=1565c0&bold=true&size=40'">
-                    <span>HDFC ERGO</span>
-                </div>
-                <div class="logo-slide">
-                    <img src="https://www.tataaia.com/favicon.ico" alt="TATA AIA"
-                        onerror="this.src='https://ui-avatars.com/api/?name=TA&background=fce4ec&color=c62828&bold=true&size=40'">
-                    <span>TATA AIA</span>
-                </div>
-                <div class="logo-slide">
-                    <img src="https://www.icicilombard.com/favicon.ico" alt="ICICI Lombard"
-                        onerror="this.src='https://ui-avatars.com/api/?name=IL&background=e8f5e9&color=2e7d32&bold=true&size=40'">
-                    <span>ICICI Lombard</span>
-                </div>
-                <div class="logo-slide">
-                    <img src="https://www.maxlifeinsurance.com/favicon.ico" alt="Max Life"
-                        onerror="this.src='https://ui-avatars.com/api/?name=ML&background=ede7f6&color=4527a0&bold=true&size=40'">
-                    <span>Max Life</span>
-                </div>
-                <div class="logo-slide">
-                    <img src="https://www.careinsurance.com/favicon.ico" alt="Care Health"
-                        onerror="this.src='https://ui-avatars.com/api/?name=CH&background=e0f7fa&color=00695c&bold=true&size=40'">
-                    <span>Care Health</span>
-                </div>
-                <div class="logo-slide">
-                    <img src="https://www.hdfclife.com/favicon.ico" alt="HDFC Life"
-                        onerror="this.src='https://ui-avatars.com/api/?name=HL&background=e3f2fd&color=0d47a1&bold=true&size=40'">
-                    <span>HDFC Life</span>
-                </div>
-                <div class="logo-slide">
-                    <img src="https://www.iciciprulife.com/favicon.ico" alt="ICICI Prudential"
-                        onerror="this.src='https://ui-avatars.com/api/?name=IP&background=f3e5f5&color=6a1b9a&bold=true&size=40'">
-                    <span>ICICI Prudential</span>
-                </div>
-                <div class="logo-slide">
-                    <img src="https://www.starhealth.in/favicon.ico" alt="Star Health"
-                        onerror="this.src='https://ui-avatars.com/api/?name=SH&background=fff3e0&color=e65100&bold=true&size=40'">
-                    <span>Star Health</span>
-                </div>
-                <div class="logo-slide">
-                    <img src="https://www.reliancegeneral.co.in/favicon.ico" alt="Reliance General"
-                        onerror="this.src='https://ui-avatars.com/api/?name=RG&background=ffebee&color=b71c1c&bold=true&size=40'">
-                    <span>Reliance General</span>
-                </div>
-            </div><!-- end logos-track -->
-        </div><!-- end logos-carousel-wrapper -->
-
-        <div class="spacer-50"></div>
-
-        <!-- Stats & Benefits (unchanged) -->
-        <div class="container">
-            <div class="header-group reveal">
-                <h2 class="text-dark">Benefits of plans that we curate</h2>
-                <p class="subtitle-dark">
-                    <span class="squiggly-blue">We stand by you at every step</span>
-                    — and select only the best plans for you
-                </p>
+                <div class="logo-slide"><img src="https://www.bajajallianz.com/favicon.ico" alt="BA" onerror="this.src='https://ui-avatars.com/api/?name=BA&background=fff&color=000'"> <span>Bajaj Allianz</span></div>
+                <div class="logo-slide"><img src="https://www.hdfcergo.com/favicon.ico" alt="HE" onerror="this.src='https://ui-avatars.com/api/?name=HE&background=fff&color=000'"> <span>HDFC ERGO</span></div>
+                <div class="logo-slide"><img src="https://www.tataaia.com/favicon.ico" alt="TA" onerror="this.src='https://ui-avatars.com/api/?name=TA&background=fff&color=000'"> <span>TATA AIA</span></div>
+                <div class="logo-slide"><img src="https://www.icicilombard.com/favicon.ico" alt="IL" onerror="this.src='https://ui-avatars.com/api/?name=IL&background=fff&color=000'"> <span>ICICI Lombard</span></div>
+                <div class="logo-slide"><img src="https://www.maxlifeinsurance.com/favicon.ico" alt="ML" onerror="this.src='https://ui-avatars.com/api/?name=ML&background=fff&color=000'"> <span>Max Life</span></div>
+                <div class="logo-slide"><img src="https://www.careinsurance.com/favicon.ico" alt="CH" onerror="this.src='https://ui-avatars.com/api/?name=CH&background=fff&color=000'"> <span>Care Health</span></div>
+                
+                <div class="logo-slide"><img src="https://www.bajajallianz.com/favicon.ico" alt="BA" onerror="this.src='https://ui-avatars.com/api/?name=BA&background=fff&color=000'"> <span>Bajaj Allianz</span></div>
+                <div class="logo-slide"><img src="https://www.hdfcergo.com/favicon.ico" alt="HE" onerror="this.src='https://ui-avatars.com/api/?name=HE&background=fff&color=000'"> <span>HDFC ERGO</span></div>
+                <div class="logo-slide"><img src="https://www.tataaia.com/favicon.ico" alt="TA" onerror="this.src='https://ui-avatars.com/api/?name=TA&background=fff&color=000'"> <span>TATA AIA</span></div>
+                <div class="logo-slide"><img src="https://www.icicilombard.com/favicon.ico" alt="IL" onerror="this.src='https://ui-avatars.com/api/?name=IL&background=fff&color=000'"> <span>ICICI Lombard</span></div>
             </div>
+
+            
+        </div>
+        <div class="container">
             <div class="stats-container reveal">
-                <div class="stat-item">
-                    <h3>15,000+</h3>
-                    <p>Cashless hospitals</p>
-                </div>
-                <div class="stat-item border-sides">
-                    <h3>24x7</h3>
-                    <p>Claims support</p>
-                </div>
-                <div class="stat-item">
-                    <h3>₹75,000</h3>
-                    <p>worth of tax saving</p>
-                </div>
+                <div class="stat-item"><h3>15,000+</h3><p>Cashless Hospitals</p></div>
+                <div class="stat-divider"></div>
+                <div class="stat-item"><h3>24x7</h3><p>Claims Support</p></div>
+                <div class="stat-divider"></div>
+                <div class="stat-item"><h3>₹75,000</h3><p>Tax Savings</p></div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== COMPARISON SECTION ==================== -->
-    <section class="comparison-section">
-        <div class="container">
-
-            <!-- Section Header -->
-            <div class="comparison-header reveal">
-                <span class="section-badge">Why Choose Us</span>
-                <h2>YesBima vs <span class="text-muted-strike">The Industry</span></h2>
-                <p class="comparison-subtitle">
-                    See how Pillow stacks up against traditional insurance providers.
-                    <br>The difference is clear.
-                </p>
-            </div>
-
-            <!-- Comparison Table Card -->
-            <div class="comparison-card reveal">
-
-                <!-- Table Header Row -->
-                <div class="comp-row comp-head">
-                    <div class="comp-cell feature-col">
-                        <span>Feature</span>
-                    </div>
-                    <div class="comp-cell industry-col">
-                        <div class="col-label industry-label">
-                            <i class="fas fa-building"></i>
-                            <span>Industry Standard</span>
-                        </div>
-                    </div>
-                    <div class="comp-cell pillow-col highlighted-col">
-                        <div class="col-label pillow-label">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>YesBima</span>
-                            <span class="recommended-badge">Recommended</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Row 1: Advice -->
-                <div class="comp-row reveal">
-                    <div class="comp-cell feature-col">
-                        <div class="feature-info">
-                            <div class="feature-icon-wrap">
-                                <i class="fas fa-comments"></i>
-                            </div>
-                            <span>Advice</span>
-                        </div>
-                    </div>
-                    <div class="comp-cell industry-col">
-                        <div class="bad-chip">
-                            <i class="fas fa-times-circle"></i>
-                            Commission-driven
-                        </div>
-                    </div>
-                    <div class="comp-cell pillow-col highlighted-col">
-                        <div class="good-chip">
-                            <i class="fas fa-check-circle"></i>
-                            Need-driven
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Row 2: Transparency -->
-                <div class="comp-row reveal">
-                    <div class="comp-cell feature-col">
-                        <div class="feature-info">
-                            <div class="feature-icon-wrap">
-                                <i class="fas fa-eye"></i>
-                            </div>
-                            <span>Transparency</span>
-                        </div>
-                    </div>
-                    <div class="comp-cell industry-col">
-                        <div class="bad-chip">
-                            <i class="fas fa-times-circle"></i>
-                            Hidden Charges
-                        </div>
-                    </div>
-                    <div class="comp-cell pillow-col highlighted-col">
-                        <div class="good-chip">
-                            <i class="fas fa-check-circle"></i>
-                            100% Clear
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Row 3: Pressure -->
-                <div class="comp-row reveal">
-                    <div class="comp-cell feature-col">
-                        <div class="feature-info">
-                            <div class="feature-icon-wrap">
-                                <i class="fas fa-bolt"></i>
-                            </div>
-                            <span>Pressure</span>
-                        </div>
-                    </div>
-                    <div class="comp-cell industry-col">
-                        <div class="bad-chip">
-                            <i class="fas fa-times-circle"></i>
-                            High Pressure Sales
-                        </div>
-                    </div>
-                    <div class="comp-cell pillow-col highlighted-col">
-                        <div class="good-chip">
-                            <i class="fas fa-check-circle"></i>
-                            Zero Pressure
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Row 4: Claims -->
-                <div class="comp-row reveal">
-                    <div class="comp-cell feature-col">
-                        <div class="feature-info">
-                            <div class="feature-icon-wrap">
-                                <i class="fas fa-file-invoice"></i>
-                            </div>
-                            <span>Claims Support</span>
-                        </div>
-                    </div>
-                    <div class="comp-cell industry-col">
-                        <div class="bad-chip">
-                            <i class="fas fa-times-circle"></i>
-                            Weak Support
-                        </div>
-                    </div>
-                    <div class="comp-cell pillow-col highlighted-col">
-                        <div class="good-chip">
-                            <i class="fas fa-check-circle"></i>
-                            Full Support 24/7
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Row 5: Goal -->
-                <div class="comp-row reveal">
-                    <div class="comp-cell feature-col">
-                        <div class="feature-info">
-                            <div class="feature-icon-wrap">
-                                <i class="fas fa-bullseye"></i>
-                            </div>
-                            <span>Goal</span>
-                        </div>
-                    </div>
-                    <div class="comp-cell industry-col">
-                        <div class="bad-chip">
-                            <i class="fas fa-times-circle"></i>
-                            Sell Policies
-                        </div>
-                    </div>
-                    <div class="comp-cell pillow-col highlighted-col">
-                        <div class="good-chip">
-                            <i class="fas fa-check-circle"></i>
-                            Protect You
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Row 6: Cost -->
-                <div class="comp-row reveal">
-                    <div class="comp-cell feature-col">
-                        <div class="feature-info">
-                            <div class="feature-icon-wrap">
-                                <i class="fas fa-rupee-sign"></i>
-                            </div>
-                            <span>Cost to You</span>
-                        </div>
-                    </div>
-                    <div class="comp-cell industry-col">
-                        <div class="bad-chip">
-                            <i class="fas fa-times-circle"></i>
-                            Hidden Fees
-                        </div>
-                    </div>
-                    <div class="comp-cell pillow-col highlighted-col">
-                        <div class="good-chip">
-                            <i class="fas fa-check-circle"></i>
-                            Always Free
-                        </div>
-                    </div>
-                </div>
-
-            </div><!-- End comparison-card -->
-
-            <!-- Bottom CTA inside comparison -->
-            <div class="comparison-cta reveal">
-                <p>Join <strong>5,000+</strong> families who made the smart switch.</p>
-                <button class="cta-btn">
-                    Get Free Advice Now <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- TESTIMONIALS SECTION -->
-    <section class="white-section testimonials-section">
+    <!-- Reviews & FAQs -->
+    <section class="section-padding">
         <div class="container split-layout">
-            <div class="testimonial-intro sticky-content reveal">
-                <h2 class="text-dark">We don’t make<br>hollow promises</h2>
-                <p class="subtitle-large">Here’s proof...</p>
+            <div class="reveal">
+                <h2>We don’t make hollow promises.</h2>
+                <p class="subtitle">Here’s proof from families who trusted us.</p>
+                <div class="reviews">
+                <div class="glass-card" style="margin-bottom: 20px; padding: 30px;">
+                    <div class="stars-gold"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p style="font-style: italic; font-size: 0.95rem;">"Suyash Buwade has been helping our family navigate health insurance planning. He has been proactive, diligent and sincere."</p>
+                    <div class="user-info"><i class="fas fa-user-circle" style="font-size: 1.5rem; color: var(--accent-primary);"></i> Dr. Suresh JeyaRaman</div>
+                </div>
+                
+                <div class="glass-card" style="margin-bottom: 20px; padding: 30px;">
+                    <div class="stars-gold"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p style="font-style: italic; font-size: 0.95rem;">"Deepti Pal was my advisor. She helped me through the process and was very flexible in terms of follow up calls."</p>
+                    <div class="user-info"><i class="fas fa-user-circle" style="font-size: 1.5rem; color: var(--accent-primary);"></i> Navaneeth</div>
+                </div>
+
+                <div class="glass-card" style="margin-bottom: 20px; padding: 30px;">
+                    <div class="stars-gold"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p style="font-style: italic; font-size: 0.95rem;">"Deepti Pal was my advisor. She helped me through the process and was very flexible in terms of follow up calls."</p>
+                    <div class="user-info"><i class="fas fa-user-circle" style="font-size: 1.5rem; color: var(--accent-primary);"></i> Navaneeth</div>
+                </div>
+                </div>
             </div>
-            <div class="testimonial-grid">
-                <div class="review-card reveal">
-                    <div class="stars-gold"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p>"Suyash Buwade has been helping our family navigate health insurance planning for my family & I.
-                        He has been proactive, diligent and sincere."</p>
-                    <div class="user-info">
-                        <div class="avatar"><i class="fas fa-user"></i></div>
-                        <span>Dr. Suresh JeyaRaman Iyer</span>
-                    </div>
+            
+            <div class="reveal delay-1">
+                <h2 style="margin-top: 30px; margin-bottom: 30px;">FAQs</h2>
+                <div class="faq-item">
+                    <button class="faq-question">What is YesBima? <i class="fas fa-plus"></i></button>
+                    <div class="faq-answer"><p>YesBima is an insurance advisory platform that helps you understand your insurance needs and buy the right policy without any spam or biased sales tactics.</p></div>
                 </div>
-                <div class="review-card reveal">
-                    <div class="stars-gold"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p>"I have been puzzled about term insurance for a long time. Ashley helped me a lot. The first
-                        consultation call was very informative."</p>
-                    <div class="user-info">
-                        <div class="avatar"><i class="fas fa-user"></i></div>
-                        <span>Khushboo</span>
-                    </div>
+                <div class="faq-item">
+                    <button class="faq-question">Do I have to pay for an Advisor? <i class="fas fa-plus"></i></button>
+                    <div class="faq-answer"><p>No, the consultation is completely free. We get paid by the insurance companies, not by you, and our prices are the same as buying directly.</p></div>
                 </div>
-                <div class="review-card reveal">
-                    <div class="stars-gold"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p>"Deepti Pal was my Term Insurance advisor. She helped me through the process and was very
-                        flexible in terms of follow up calls."</p>
-                    <div class="user-info">
-                        <div class="avatar"><i class="fas fa-user"></i></div>
-                        <span>Navaneeth</span>
-                    </div>
-                </div>
-                <div class="review-card reveal">
-                    <div class="stars-gold"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p>"I was searching for good health and term insurance. Anushka has helped me understand the key
-                        things to look for."</p>
-                    <div class="user-info">
-                        <div class="avatar"><i class="fas fa-user"></i></div>
-                        <span>Hari Subrahmanyam</span>
-                    </div>
+                <div class="faq-item">
+                    <button class="faq-question">Should I have a personal plan if I have corporate insurance? <i class="fas fa-plus"></i></button>
+                    <div class="faq-answer"><p>Yes, corporate plans often have lower coverage limits and cease to exist if you leave the job. A personal plan ensures you stay covered.</p></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- BOTTOM CTA BANNER -->
-    <section class="bottom-cta-section">
-        <div class="container">
-            <div class="cta-banner reveal">
-                <div class="watermark-shield"><i class="fas fa-shield-alt"></i></div>
-                <div class="banner-text">
-                    <h2>Insurance made<br>simple with <span class="text-blue">YesBima</span></h2>
-                </div>
-                <div class="banner-btn">
-                    <button class="cta-btn">Book a free consultation now! <i class="fas fa-arrow-right"></i></button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== PART 3: FAQ & FOOTER (NEW) ==================== -->
-
-    <!-- FAQ SECTION -->
-    <section class="white-section faq-section">
-        <div class="container">
-            <h2 class="section-title text-dark">Frequently asked questions</h2>
-
-            <div class="faq-container">
-                <!-- Question 1 -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        What is YesBima?
-                        <span class="icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>YesBima is an insurance advisory platform that helps you understand your insurance needs and
-                            buy the right policy without any spam or biased sales tactics.</p>
-                    </div>
-                </div>
-
-                <!-- Question 2 -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        Do I have to pay to speak to a YesBima Advisor?
-                        <span class="icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>No, the consultation with our advisors is completely free. We get paid by the insurance
-                            companies, not by you, and our prices are the same as buying directly.</p>
-                    </div>
-                </div>
-
-                <!-- Question 3 -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        Will I have a choice of products to select from, or do you offer only a specific policy?
-                        <span class="icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>We work with all major insurance providers. We analyze your requirements and offer a curated
-                            list of products that fit your needs best.</p>
-                    </div>
-                </div>
-
-                <!-- Question 4 -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        My employer provides health insurance. Should I have a personal insurance plan?
-                        <span class="icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Yes, corporate plans often have lower coverage limits and cease to exist if you leave the
-                            job. A personal plan ensures you stay covered regardless of your employment status.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-top">
-                <div class="logo footer-logo">
-                    <i class="fas fa-shield-alt"></i> YesBima
-                </div>
-                <p class="footer-slogan">Insurance made simple with YesBima</p>
-
-                <div class="footer-contacts">
-                    <div class="contact-box">
-                        <p class="contact-label">For Insurance Queries:</p>
-                        <a href="mailto:support@yesbimainsurance.com">support@yesbimainsurance.com</a>
-                    </div>
-                    <div class="contact-box border-left">
-                        <p class="contact-label">For claims Queries:</p>
-                        <a href="mailto:claims@yesbimainsurance.com">claims@yesbimainsurance.com</a>
-                    </div>
-                </div>
+            <div class="logo" style="justify-content: center; margin-bottom: 20px;"><i class="fas fa-shield-alt"></i> YesBima</div>
+            <p>Insurance made simple.</p>
+            <div class="footer-contacts" style="margin: 20px 0;">
+                <a href="mailto:support@yesbimainsurance.com"><i class="fas fa-envelope"></i> support@yesbimainsurance.com</a>
+                <a href="mailto:claims@yesbimainsurance.com"><i class="fas fa-headset"></i> claims@yesbimainsurance.com</a>
             </div>
-
-            <div class="footer-divider"></div>
-
-            <div class="footer-bottom">
-                <div class="footer-info">
-                    <p class="copyright">YesBima Insurance © 2024–2027. All Rights Reserved..</p>
-                    <p class="address-text">
-                        In Association with : Prost Insurance Brokers Pvt. Ltd.(OneAssure), 1st floor, 91springboard, MG
-                        Road, Gopala Krishna Complex 45/3, Residency Road, Mahatma Gandhi Rd, Bengaluru, Karnataka
-                        560025.License No. 756, Direct Broker (Life & General).
-                    </p>
-                </div>
-                <div class="footer-disclaimer">
-                    <p>Disclaimer : The information provided on this website is for general informational purpose only
-                        and does not constitute professional advice. For detailed policy information and terms, please
-                        refer to your individual policy document or contact our customer service team.</p>
-                </div>
-            </div>
+            <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 30px;">© 2024–2027 YesBima Insurance. All Rights Reserved. License No. 756.</p>
         </div>
     </footer>
 
-    <!-- ==================== GLOBAL BOOKING MODAL ==================== -->
+    <!-- Booking Model -->
     <div id="bookingModal" class="modal">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
+            <button class="close-btn">&times;</button>
             <h2>Book an Appointment</h2>
 
             <form id="bookingForm">
@@ -748,27 +332,21 @@
                 <div class="form-group">
                     <label for="contact">Contact Number</label>
                     <div class="input-group">
-                        <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" placeholder="9876543210 (for testing)"
-                            required>
-                        <button type="button" id="sendOtpBtn" class="btn secondary-btn" onclick="sendOTP()">Send
-                            OTP</button>
-                        <!-- Error message -->
-                        <small id="contactError" class="error-text"></small>
-                        <span id="verifiedTick" class="verified-icon" style="display: none;">&#10004;</span>
+                        <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" placeholder="10-digit number" required>
+                        <button type="button" id="sendOtpBtn" class="cta-btn secondary-btn btn">Send OTP</button>
                     </div>
+                    <small id="contactError" class="error-text"></small>
                 </div>
 
                 <div class="form-group" id="otpSection" style="display: none;">
                     <label for="otpInput">Enter OTP</label>
                     <div class="input-group">
-                        <input type="text" id="otpInput" name="otpInput" placeholder="123456 (for testing)">
-                        <button type="button" id="validateOtpBtn" class="btn secondary-btn"
-                            onclick="verifyOTP()">Validate</button>
-                        <!-- Error message -->
-                        <small id="otpError" class="error-text"></small>
-                        <!-- reCAPTCHA -->
-                        <div id="recaptcha-container"></div>
+                        <input type="text" id="otpInput" name="otpInput" placeholder="Enter 6-digit OTP">
+                        <button type="button" id="validateOtpBtn" class="cta-btn secondary-btn btn">Validate</button>
                     </div>
+                    <small id="otpError" class="error-text"></small>
+                    <span id="verifiedTick" class="verified-icon" style="display: none;"><i class="fas fa-check-circle" style="margin-right: 5px;"></i> Verified</span>
+                    <div id="recaptcha-container"></div>
                 </div>
 
                 <div class="form-group">
@@ -791,35 +369,28 @@
                     <input type="datetime-local" id="datetime" name="datetime" required>
                 </div>
 
-                <button type="submit" id="submitBtn" class="btn submit-btn" disabled>Book Appointment</button>
+                <button type="submit" id="submitBtn" class="cta-btn" style="width: 100%; justify-content: center; margin-top: 10px;" disabled>Confirm Booking</button>
             </form>
         </div>
     </div>
-    <!-- ==================== END GLOBAL BOOKING MODAL ==================== -->
 
-    <!-- ===== SUCCESS POPUP ===== -->
-    <div id="successPopup" class="popup-overlay">
-        <div class="popup-box">
-            <!-- Animated SVG Circle Check -->
-            <div class="check-container">
-                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
-                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-                </svg>
-            </div>
-
-            <h3 class="popup-title">Appointment Successful!</h3>
-            <p class="popup-message">Thank you! Our advisor will contact you shortly to confirm your appointment.</p>
-
+    <!-- Success Popup -->
+    <div id="successPopup" class="modal">
+        <div class="modal-content popup-box">
+            <i class="fas fa-check-circle" style="font-size: 60px; color: var(--accent-primary); margin-bottom: 20px;"></i>
+            <h2 style="margin-bottom: 10px;">Appointment Successful!</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Our advisor will contact you shortly to confirm your appointment.</p>
+            
             <div class="popup-details" id="popupDetails">
-                <!-- Filled by JS -->
-            </div>
+                </div>
 
-            <button class="primary-btn popup-close-btn" id="closePopupBtn">
-                Done <i class="fas fa-arrow-right"></i>
-            </button>
+            <button class="cta-btn" id="closePopupBtn" style="width: 100%; justify-content: center;">Done <i class="fas fa-arrow-right"></i></button>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -833,8 +404,6 @@
     <!-- Firebase config -->
     <!-- <script src="{% static 'app_core/js/firebase.js' %}"></script> -->
     <!-- OTP Logic -->
-    <script src="{% static 'app_core/js/auth.js' %}"></script>
-
+    <!-- <script src="{% static 'app_core/js/auth.js' %}"></script> -->
 </body>
-
 </html>
