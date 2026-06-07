@@ -114,17 +114,17 @@ function getCSRFToken() {
 
 // FIREBASE IMPLEMENTATION
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDoroDvYcYux6c7B_lUQwx7-2oFcaDYyAo",
-  authDomain: "yesbima1.firebaseapp.com",
-  projectId: "yesbima1",
-  storageBucket: "yesbima1.firebasestorage.app",
-  messagingSenderId: "675232366896",
-  appId: "1:675232366896:web:c54e35dfdd3b0aa78488f5"
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDoroDvYcYux6c7B_lUQwx7-2oFcaDYyAo",
+//   authDomain: "yesbima1.firebaseapp.com",
+//   projectId: "yesbima1",
+//   storageBucket: "yesbima1.firebasestorage.app",
+//   messagingSenderId: "675232366896",
+//   appId: "1:675232366896:web:c54e35dfdd3b0aa78488f5"
+// };
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+// // Initialize Firebase
+// firebase.initializeApp(firebaseConfig);
 
-// Export auth
-const auth = firebase.auth();
+// // Export auth
+// const auth = firebase.auth();

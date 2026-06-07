@@ -1,356 +1,489 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // --- Scroll Animations ---
-  const revealOnScroll = () => {
-    const reveals = document.querySelectorAll('.reveal');
-    const windowHeight = window.innerHeight;
-    reveals.forEach(reveal => {
-      const elementTop = reveal.getBoundingClientRect().top;
-      if (elementTop < windowHeight - 100) { reveal.classList.add('active'); }
+    // ==========================================
+    // 1. DOM ELEMENTS
+    // ==========================================
+    const modal = document.getElementById("bookingModal");
+    const openBtns = document.querySelectorAll(".openBookingBtn");
+    const closeBtns = document.querySelectorAll(".close-btn");
+    const bookingForm = document.getElementById("bookingForm");
+
+    // Step 1 Elements
+    const productError = document.getElementById("productError");
+    const step1 = document.getElementById("step1");
+    const contactInput = document.getElementById("contact");
+    const sendOtpBtn = document.getElementById("sendOtpBtn");
+    const otpSection = document.getElementById("otpSection");
+    const otpInput = document.getElementById("otpInput");
+    const validateOtpBtn = document.getElementById("validateOtpBtn");
+    const verifiedTick = document.getElementById("verifiedTick");
+    const contactError = document.getElementById("contactError");
+    const otpError = document.getElementById("otpError");
+    const nextToStep2Btn = document.getElementById("nextToStep2Btn");
+
+    // Step 2 Elements
+    const step2 = document.getElementById("step2");
+    const backToStep1Btn = document.getElementById("backToStep1Btn");
+    const dateChipsContainer = document.getElementById("dateChipsContainer");
+    const timeSlotsGrid = document.getElementById("timeSlotsGrid");
+    const hiddenDateInput = document.getElementById("selectedDate");
+    const hiddenTimeInput = document.getElementById("selectedTime");
+    const submitBtn = document.getElementById("submitBtn");
+
+    const successPopup = document.getElementById("successPopup");
+    const closePopupBtn = document.getElementById("closePopupBtn");
+    const popupDetails = document.getElementById("popupDetails");
+
+
+    // ==========================================
+    // 2. MODAL & STEP TRANSITIONS
+    // ==========================================
+    openBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.classList.add('show');
+            document.body.classList.add('modal-open');
+            generateDateChips(); // Pre-load dates
+        });
     });
-  };
-  window.addEventListener('scroll', revealOnScroll);
-  revealOnScroll();
 
-  // --- FAQ Accordion ---
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const questionBtn = item.querySelector('.faq-question');
-    questionBtn.addEventListener('click', () => {
-      item.classList.toggle('active');
+    const closeModals = () => {
+        document.querySelectorAll('.modal').forEach(m => m.classList.remove('show'));
+        document.body.classList.remove('modal-open');
+        setTimeout(resetFormState, 300);
+    };
+
+    closeBtns.forEach(btn => btn.addEventListener('click', closeModals));
+    window.addEventListener('click', (e) => { if (e.target.classList.contains('modal')) closeModals(); });
+
+    // Move to Step 2
+    nextToStep2Btn.addEventListener('click', () => {
+
+        // 1. Custom validation for the Product Radio Buttons
+        const selectedProduct = document.querySelector('input[name="product"]:checked');
+
+        if (!selectedProduct) {
+            productError.textContent = "Please select an insurance product to continue.";
+            return; // Stop here, do not go to step 2
+        } else {
+            productError.textContent = ""; // Clear error if selected
+        }
+
+        // 2. Standard validation for the rest of the form (Name, Email)
+        if (bookingForm.checkValidity()) {
+            step1.style.display = 'none';
+            step2.style.display = 'block';
+        } else {
+            bookingForm.reportValidity();
+        }
     });
-  });
 
-  // --- MODAL & OTP LOGIC ---
-  const modal = document.getElementById("bookingModal");
-  const openBtns = document.querySelectorAll(".openBookingBtn");
-  const closeBtn = document.querySelector(".close-btn");
-  const datetimeInput = document.getElementById("datetime");
-  const bookingForm = document.getElementById("bookingForm");
-  const submitBtn = document.getElementById("submitBtn");
-
-  const contactInput = document.getElementById("contact");
-  const sendOtpBtn = document.getElementById("sendOtpBtn");
-  const otpSection = document.getElementById("otpSection");
-  const otpInput = document.getElementById("otpInput");
-  const validateOtpBtn = document.getElementById("validateOtpBtn");
-  const verifiedTick = document.getElementById("verifiedTick");
-  const contactError = document.getElementById("contactError");
-  const otpError = document.getElementById("otpError");
-
-  // Open Modal
-  openBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      modal.classList.add('show');
-      document.body.classList.add('modal-open');
-      setDateConstraints();
+    // Add this to clear the error immediately when the user clicks a product card
+    document.querySelectorAll('input[name="product"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            productError.textContent = "";
+        });
     });
-  });
 
-  // Close Modal
-  const closeModal = () => {
-    modal.classList.remove('show');
-    document.body.classList.remove('modal-open');
-    setTimeout(resetOtpState, 300);
-  };
-
-  closeBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
-
-  // Send OTP
-  // sendOtpBtn.addEventListener("click", () => {
-  //   const contactValue = contactInput.value.trim();
-  //   contactInput.classList.remove("input-error");
-  //   contactError.textContent = "";
-
-  //   if (/^[0-9]{10}$/.test(contactValue)) {
-  //     otpSection.style.display = "block";
-  //     sendOtpBtn.textContent = "Resend OTP";
-  //     alert("Otp sent successfully!");
-  //   } else {
-  //     contactInput.classList.add("input-error");
-  //     contactError.textContent = "Please enter a valid 10-digit number";
-  //   }
-  // });
-
-  // // Validate OTP
-  // validateOtpBtn.addEventListener("click", () => {
-  //   const enteredOtp = otpInput.value.trim();
-  //   otpInput.classList.remove("input-error");
-  //   otpError.textContent = "";
-
-  //   // UI Validation (Replace with Firebase in prod)
-  //   if (enteredOtp.length > 0) {
-  //     otpSection.style.display = "none";
-  //     sendOtpBtn.style.display = "none";
-  //     verifiedTick.style.display = "inline-flex";
-
-  //     contactInput.readOnly = true;
-  //     contactInput.style.opacity = "0.5";
-  //     submitBtn.disabled = false;
-  //   } else {
-  //     otpInput.classList.add("input-error");
-  //     otpError.textContent = "Please enter the OTP";
-  //   }
-  // });
+    // Back to Step 1
+    backToStep1Btn.addEventListener('click', () => {
+        step2.style.display = 'none';
+        step1.style.display = 'block';
+    });
 
 
-  // 1. Create a variable to hold the Firebase confirmation result
-let windowConfirmationResult = null; 
+    // ==========================================
+    // 3. DATE & TIME CHIP LOGIC
+    // ==========================================
+    function generateDateChips() {
+        dateChipsContainer.innerHTML = '';
+        const today = new Date();
 
-// --- 2. SEND OTP LOGIC ---
-sendOtpBtn.addEventListener("click", () => {
-    const contactValue = contactInput.value.trim();
-    contactInput.classList.remove("input-error");
-    contactError.textContent = "";
+        for (let i = 1; i <= 3; i++) {
+            const currentDate = new Date(today);
+            currentDate.setDate(today.getDate() + i);
 
-    if (/^[0-9]{10}$/.test(contactValue)) {
-        // Firebase requires the E.164 format with a country code (e.g., +91 for India)
-        const phoneNumber = "+91" + contactValue; 
-        const appVerifier = window.recaptchaVerifier;
+            const dateString = currentDate.toISOString().split('T')[0];
+            const displayDate = currentDate.toLocaleDateString('en-IN', {
+                weekday: 'short', month: 'short', day: 'numeric'
+            });
 
-        // Disable button to prevent multiple clicks while sending
-        sendOtpBtn.disabled = true;
-        sendOtpBtn.textContent = "Sending...";
+            const chip = document.createElement('div');
+            chip.className = 'select-chip';
+            chip.textContent = displayDate;
+            chip.dataset.date = dateString;
 
-        firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
-            .then((confirmationResult) => {
-                // SMS sent successfully. Store the confirmationResult.
-                windowConfirmationResult = confirmationResult;
-                
-                // Update UI
+            chip.addEventListener('click', () => {
+                document.querySelectorAll('#dateChipsContainer .select-chip').forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+
+                hiddenDateInput.value = dateString;
+                hiddenTimeInput.value = '';
+                submitBtn.disabled = true;
+
+                generateTimeSlots(dateString);
+            });
+
+            dateChipsContainer.appendChild(chip);
+        }
+    }
+
+    function generateTimeSlots(selectedDateString) {
+        timeSlotsGrid.innerHTML = '';
+        const selectedDate = new Date(selectedDateString);
+        const now = new Date();
+        const isToday = selectedDate.toDateString() === now.toDateString();
+
+        let currentTime = new Date(selectedDate);
+        currentTime.setHours(10, 0, 0, 0);
+
+        const endTime = new Date(selectedDate);
+        endTime.setHours(18, 0, 0, 0);
+
+        let slotsGenerated = false;
+
+        while (currentTime <= endTime) {
+            const timeString = currentTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+            const valueString = currentTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+
+            const chip = document.createElement('div');
+            chip.className = 'select-chip';
+            chip.textContent = timeString;
+            chip.dataset.time = valueString;
+
+            if (isToday && currentTime <= now) {
+                chip.classList.add('disabled');
+            } else {
+                chip.addEventListener('click', () => {
+                    document.querySelectorAll('#timeSlotsGrid .select-chip').forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+
+                    hiddenTimeInput.value = valueString;
+                    submitBtn.disabled = false;
+                });
+            }
+
+            timeSlotsGrid.appendChild(chip);
+            slotsGenerated = true;
+            currentTime.setMinutes(currentTime.getMinutes() + 30);
+        }
+
+        if (!slotsGenerated || timeSlotsGrid.querySelectorAll('.select-chip:not(.disabled)').length === 0) {
+            timeSlotsGrid.innerHTML = '<p class="text-muted" style="grid-column: 1 / -1;">No available slots left for today.</p>';
+        }
+    }
+
+    // ==========================================
+    // 4. DUMMY OTP LOGIC (For UI Testing)
+    // ==========================================
+    sendOtpBtn.addEventListener("click", () => {
+        const contactValue = contactInput.value.trim();
+        contactInput.classList.remove("input-error");
+        contactError.textContent = "";
+
+        if (/^[0-9]{10}$/.test(contactValue)) {
+            sendOtpBtn.disabled = true;
+            sendOtpBtn.textContent = "Sending...";
+
+            setTimeout(() => {
                 otpSection.style.display = "block";
                 sendOtpBtn.textContent = "Resend OTP";
                 sendOtpBtn.disabled = false;
-            })
-            .catch((error) => {
-                // Handle Errors (e.g., reCAPTCHA failed, invalid number)
-                console.error("Error during signInWithPhoneNumber", error);
-                contactInput.classList.add("input-error");
-                contactError.textContent = "Failed to send OTP. Please try again.";
-                
-                // Reset button and reCAPTCHA
-                sendOtpBtn.textContent = "Get OTP";
-                sendOtpBtn.disabled = false;
-                if (window.recaptchaVerifier) window.recaptchaVerifier.render();
-            });
+                otpInput.focus();
+            }, 800);
 
-    } else {
-        contactInput.classList.add("input-error");
-        contactError.textContent = "Please enter a valid 10-digit number";
-    }
-});
+        } else {
+            contactInput.classList.add("input-error");
+            contactError.textContent = "Please enter a valid 10-digit number";
+        }
+    });
 
-// --- 3. VALIDATE OTP LOGIC ---
-validateOtpBtn.addEventListener("click", () => {
-    const enteredOtp = otpInput.value.trim();
-    otpInput.classList.remove("input-error");
-    otpError.textContent = "";
+    validateOtpBtn.addEventListener("click", () => {
+        const enteredOtp = otpInput.value.trim();
+        otpInput.classList.remove("input-error");
+        otpError.textContent = "";
 
-    if (enteredOtp.length === 6) { // Firebase OTPs are 6 digits
-        // Change button state while verifying
-        validateOtpBtn.disabled = true;
-        validateOtpBtn.textContent = "Verifying...";
+        if (enteredOtp === "123456") {
+            validateOtpBtn.disabled = true;
+            validateOtpBtn.textContent = "Verifying...";
 
-        // Use the confirmationResult saved from the previous step
-        windowConfirmationResult.confirm(enteredOtp)
-            .then((result) => {
-                // OTP verified successfully
-                const user = result.user;
-                console.log("User successfully verified:", user.uid);
-
-                // Update UI for success
+            setTimeout(() => {
                 otpSection.style.display = "none";
                 sendOtpBtn.style.display = "none";
-                verifiedTick.style.display = "inline-flex";
-
+                verifiedTick.style.display = "flex";
+                console.log(verifiedTick.style.display)
                 contactInput.readOnly = true;
                 contactInput.style.opacity = "0.5";
-                submitBtn.disabled = false;
-                validateOtpBtn.textContent = "Verify";
+
+                nextToStep2Btn.disabled = false;
                 validateOtpBtn.disabled = false;
+            }, 500);
+
+        } else {
+            otpInput.classList.add("input-error");
+            otpError.textContent = "Invalid OTP. Use 123456 for testing.";
+        }
+    });
+
+    // ==========================================
+    // 4. FIREBASE OTP LOGIC
+    // ==========================================
+    // let windowConfirmationResult = null;
+
+    // if (typeof firebase !== 'undefined') {
+    //   const firebaseConfig = {
+    //     apiKey: "AIzaSyDoroDvYcYux6c7B_lUQwx7-2oFcaDYyAo",
+    //     authDomain: "yesbima1.firebaseapp.com",
+    //     projectId: "yesbima1",
+    //     storageBucket: "yesbima1.firebasestorage.app",
+    //     messagingSenderId: "675232366896",
+    //     appId: "1:675232366896:web:c54e35dfdd3b0aa78488f5"
+    //   };
+    //   if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    //   if (window.recaptchaVerifier) window.recaptchaVerifier.clear();
+    //   window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', { size: 'invisible' });
+    // }
+
+    // sendOtpBtn.addEventListener("click", () => {
+    //   const contactValue = contactInput.value.trim();
+    //   contactInput.classList.remove("input-error");
+    //   contactError.textContent = "";
+
+    //   if (/^[0-9]{10}$/.test(contactValue)) {
+    //     const phoneNumber = "+91" + contactValue;
+    //     const appVerifier = window.recaptchaVerifier;
+
+    //     sendOtpBtn.disabled = true;
+    //     sendOtpBtn.textContent = "Sending...";
+
+    //     firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+    //       .then((confirmationResult) => {
+    //         windowConfirmationResult = confirmationResult;
+    //         otpSection.style.display = "block";
+    //         sendOtpBtn.textContent = "Resend OTP";
+    //         sendOtpBtn.disabled = false;
+    //       })
+    //       .catch((error) => {
+    //         console.error("Error", error);
+    //         contactInput.classList.add("input-error");
+    //         contactError.textContent = "Failed to send OTP.";
+    //         sendOtpBtn.textContent = "Get OTP";
+    //         sendOtpBtn.disabled = false;
+    //         if (window.recaptchaVerifier) window.recaptchaVerifier.render();
+    //       });
+    //   } else {
+    //     contactInput.classList.add("input-error");
+    //     contactError.textContent = "Please enter a valid 10-digit number";
+    //   }
+    // });
+
+    // validateOtpBtn.addEventListener("click", () => {
+    //   const enteredOtp = otpInput.value.trim();
+    //   otpInput.classList.remove("input-error");
+    //   otpError.textContent = "";
+
+    //   if (enteredOtp.length === 6) {
+    //     validateOtpBtn.disabled = true;
+    //     validateOtpBtn.textContent = "Verifying...";
+
+    //     windowConfirmationResult.confirm(enteredOtp)
+    //       .then(() => {
+    //         otpSection.style.display = "none";
+    //         sendOtpBtn.style.display = "none";
+    //         verifiedTick.style.display = "flex";
+
+    //         contactInput.readOnly = true;
+    //         contactInput.style.opacity = "0.5";
+
+    //         // CRITICAL CHANGE: Enable the "Next" button, not the submit button
+    //         nextToStep2Btn.disabled = false;
+    //       })
+    //       .catch(() => {
+    //         otpInput.classList.add("input-error");
+    //         otpError.textContent = "Invalid OTP. Please try again.";
+    //         validateOtpBtn.textContent = "Verify";
+    //         validateOtpBtn.disabled = false;
+    //       });
+    //   } else {
+    //     otpInput.classList.add("input-error");
+    //     otpError.textContent = "Please enter the 6-digit OTP";
+    //   }
+    // });
+
+    function resetFormState() {
+        if (bookingForm) bookingForm.reset();
+
+        step1.style.display = 'block';
+        step2.style.display = 'none';
+
+        otpSection.style.display = "none";
+        // sendOtpBtn.style.display = "inline-flex";
+        sendOtpBtn.textContent = "Send OTP";
+        sendOtpBtn.disabled = false;
+        verifiedTick.style.display = "none";
+        contactInput.readOnly = false;
+        contactInput.style.opacity = "1";
+        nextToStep2Btn.disabled = true;
+
+        dateChipsContainer.innerHTML = '';
+        timeSlotsGrid.innerHTML = '<p class="text-muted" style="grid-column: 1 / -1; font-size: 0.9rem;">Please select a date first.</p>';
+        hiddenDateInput.value = '';
+        hiddenTimeInput.value = '';
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Confirm Booking';
+    }
+
+
+    // ==========================================
+    // 5. FORM SUBMISSION (BACKEND AJAX/FETCH)
+    // ==========================================
+    function showSuccessPopup(contactNo, appointmentId, dateString, timeString) {
+        const dateObj = new Date(dateString);
+        const formattedDate = dateObj.toLocaleDateString('en-IN', {
+            weekday: 'short', day: 'numeric', month: 'short'
+        });
+
+        // Convert 24h time to 12h for display
+        let [hours, minutes] = timeString.split(':');
+        let ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12 || 12;
+        const displayTime = `${hours}:${minutes} ${ampm}`;
+
+        popupDetails.innerHTML = `
+            <p><i class="fas fa-phone-alt"></i> +91 ${contactNo}</p>
+            <p><i class="fas fa-shield-alt"></i> ID: ${appointmentId}</p>
+            <p><i class="far fa-calendar-alt"></i> ${formattedDate} at ${displayTime}</p>
+        `;
+
+        // Slightly delay to ensure modal close animation finishes
+        setTimeout(() => {
+            successPopup.classList.add('show');
+        }, 300);
+    }
+
+    if (closePopupBtn) closePopupBtn.addEventListener('click', closeModals);
+
+    if (bookingForm) {
+        bookingForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Prevent double clicking
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Processing...';
+
+            const selectedProduct = document.querySelector('input[name="product"]:checked');
+
+            // Get CSRF Token safely
+            const csrfTokenElement = document.querySelector("input[name=csrfmiddlewaretoken]");
+            const csrfToken = csrfTokenElement ? csrfTokenElement.value : '';
+
+            let data = {
+                name: document.getElementById("name").value,
+                contactNo: document.getElementById("contact").value,
+                email: document.getElementById("email").value,
+                productType: selectedProduct ? selectedProduct.value : '',
+                bookingDate: hiddenDateInput.value,
+                bookingTime: hiddenTimeInput.value,
+            };
+
+            // ACTUAL BACKEND CALL
+            fetch("/book-appointment/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrfToken
+                },
+                body: JSON.stringify(data)
             })
-            .catch((error) => {
-                // OTP was incorrect or expired
-                console.error("Error verifying OTP", error);
-                otpInput.classList.add("input-error");
-                otpError.textContent = "Invalid OTP. Please try again.";
-                
-                validateOtpBtn.textContent = "Verify";
-                validateOtpBtn.disabled = false;
-            });
-    } else {
-        otpInput.classList.add("input-error");
-        otpError.textContent = "Please enter the 6-digit OTP";
+                .then(response => response.json())
+                .then(response => {
+                    if (response.success === true) {
+                        closeModals();
+                        // Assumes your backend returns the booking ID in 'response.message'
+                        showSuccessPopup(data.contactNo, response.message, data.bookingDate, data.bookingTime);
+                    } else {
+                        alert("Something went wrong! " + response.message);
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = 'Confirm Booking';
+                    }
+                })
+                .catch(error => {
+                    console.error("Error booking appointment:", error);
+                    alert("Error occurred while booking appointment. Please try again later.");
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Confirm Booking';
+                });
+        });
     }
-});
 
-  // Reset Form UI
-  function resetOtpState() {
-    bookingForm.reset();
-    otpSection.style.display = "none";
-    sendOtpBtn.style.display = "flex";
-    sendOtpBtn.textContent = "Send OTP";
-    verifiedTick.style.display = "none";
-    contactInput.readOnly = false;
-    contactInput.style.opacity = "1";
-    submitBtn.disabled = true;
-    contactInput.classList.remove("input-error");
-    contactError.textContent = "";
-    otpInput.classList.remove("input-error");
-    otpError.textContent = "";
-  }
-
-  // Set Date Constraints
-  function setDateConstraints() {
-    const formatDateTime = (date) => {
-      const pad = n => n < 10 ? '0' + n : n;
-      return date.getFullYear() + '-' + pad(date.getMonth() + 1) + '-' +
-        pad(date.getDate()) + 'T' + pad(date.getHours()) + ':' + pad(date.getMinutes());
+    // ==========================================
+    // 6. TIMELINE ANIMATION (RESTORED)
+    // ==========================================
+    const revealOnScrollTimeline = () => {
+        const reveals = document.querySelectorAll('.reveal');
+        const windowHeight = window.innerHeight;
+        reveals.forEach(reveal => {
+            const elementTop = reveal.getBoundingClientRect().top;
+            if (elementTop < windowHeight - 100) { reveal.classList.add('active'); }
+        });
     };
-    const now = new Date();
-    now.setDate(now.getDate() + 1);
-    const threeDaysFromNow = new Date();
-    threeDaysFromNow.setDate(now.getDate() + 2);
-    datetimeInput.min = formatDateTime(now);
-    datetimeInput.max = formatDateTime(threeDaysFromNow);
-  }
+    window.addEventListener('scroll', revealOnScrollTimeline);
+    revealOnScrollTimeline();
 
-  // --- FORM SUBMISSION (AJAX) ---
-  const successPopup = document.getElementById("successPopup");
-  const closePopupBtn = document.getElementById("closePopupBtn");
-  const popupDetails = document.getElementById("popupDetails");
-
-  function showSuccessPopup(contactNo, datetime) {
-    const dateObj = new Date(datetime);
-    const formattedDate = dateObj.toLocaleString('en-IN', {
-      weekday: 'short', day: 'numeric', month: 'short',
-      hour: '2-digit', minute: '2-digit'
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.querySelector('.faq-question').addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
     });
 
-    popupDetails.innerHTML = `
-                    <p><i class="fas fa-phone-alt"></i> +91 ${contactNo}</p>
-                    <p><i class="far fa-calendar-alt"></i> ${formattedDate}</p>
-                `;
-    successPopup.classList.add('show');
-  }
+    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-  closePopupBtn.addEventListener('click', () => { successPopup.classList.remove('show'); });
-  successPopup.addEventListener('click', (e) => { if (e.target === successPopup) successPopup.classList.remove('show'); });
+    async function initProcessAnimation() {
+        const steps = document.querySelectorAll('.t-step-marker');
+        const timelineContainer = document.querySelector('.animated-timeline');
+        const progressLine = document.querySelector('.timeline-progress-line');
 
-  $(document).ready(function () {
-    $("#bookingForm").submit(function (e) {
-      e.preventDefault();
+        if (!timelineContainer || steps.length === 0) return;
 
-      let data = {
-        name: $("#name").val(),
-        contactNo: $("#contact").val(),
-        email: $("#email").val(),
-        productType: $("#product").val(),
-        dateTime: $("#datetime").val(),
-      };
+        while (true) {
+            steps.forEach(step => step.classList.remove('active'));
+            if (progressLine) {
+                progressLine.style.transition = 'none';
+                progressLine.style.opacity = '1';
+                void progressLine.offsetWidth;
+            }
+            if (timelineContainer) {
+                timelineContainer.style.setProperty('--progress', '0%');
+            }
 
-      /* UNCOMMENT FOR BACKEND
-      let csrfToken = $("input[name=csrfmiddlewaretoken]").val();
-      $.ajax({
-          url: "/book-appointment/",
-          type: "POST",
-          data: JSON.stringify(data),
-          contentType: "application/json",
-          headers: { "X-CSRFToken": csrfToken },
-          success: function (response) {
-              if (response.success === true) {
-                  closeModal();
-                  showSuccessPopup(data.contactNo, data.dateTime);
-              } else { alert("Error: " + response.message); }
-          }
-      });
-      */
+            await sleep(500);
 
-      // Frontend demo behavior:
-      closeModal();
-      showSuccessPopup(data.contactNo, data.dateTime);
-    });
-  });
+            if (progressLine) progressLine.style.transition = '';
 
-  // --- FIREBASE INIT ---
-  if (typeof firebase !== 'undefined') {
-    const firebaseConfig = {
-      apiKey: "AIzaSyDoroDvYcYux6c7B_lUQwx7-2oFcaDYyAo",
-      authDomain: "yesbima1.firebaseapp.com",
-      projectId: "yesbima1",
-      storageBucket: "yesbima1.firebasestorage.app",
-      messagingSenderId: "675232366896",
-      appId: "1:675232366896:web:c54e35dfdd3b0aa78488f5"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
+            steps[0].classList.add('active');
+            await sleep(1000);
 
-    if (window.recaptchaVerifier) window.recaptchaVerifier.clear();
-    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-      'recaptcha-container',
-      { size: 'invisible', callback: function () { console.log("Verified"); } }
-    );
-  }
+            if (timelineContainer) timelineContainer.style.setProperty('--progress', '50%');
+            await sleep(800);
 
-  // --- TIMELINE ANIMATION LOGIC (RESPONSIVE) ---
-  const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+            steps[1].classList.add('active');
+            await sleep(1000);
 
-  async function initProcessAnimation() {
-    const steps = document.querySelectorAll('.t-step-marker');
-    const timelineContainer = document.querySelector('.animated-timeline');
-    const progressLine = document.querySelector('.timeline-progress-line');
+            if (timelineContainer) timelineContainer.style.setProperty('--progress', '100%');
+            await sleep(800);
 
-    if (!timelineContainer || steps.length === 0) return;
+            steps[2].classList.add('active');
+            await sleep(3500);
 
-    while (true) {
-      // 1. Hard Reset State
-      steps.forEach(step => step.classList.remove('active'));
-      progressLine.style.transition = 'none'; // Disable transition for instant reset
-      timelineContainer.style.setProperty('--progress', '0%');
-      progressLine.style.opacity = '1';
+            if (progressLine) {
+                progressLine.style.transition = 'opacity 0.5s ease';
+                progressLine.style.opacity = '0';
+            }
+            steps.forEach(step => step.classList.remove('active'));
 
-      // Force browser reflow to apply instant reset before continuing
-      void progressLine.offsetWidth;
-
-      await sleep(500);
-
-      // Restore CSS transitions
-      progressLine.style.transition = '';
-
-      // 2. Activate Step 1
-      steps[0].classList.add('active');
-      await sleep(1000);
-
-      // 3. Move line to Step 2
-      timelineContainer.style.setProperty('--progress', '50%');
-      await sleep(800);
-
-      // 4. Activate Step 2
-      steps[1].classList.add('active');
-      await sleep(1000);
-
-      // 5. Move line to Step 3
-      timelineContainer.style.setProperty('--progress', '100%');
-      await sleep(800);
-
-      // 6. Activate Step 3
-      steps[2].classList.add('active');
-
-      // 7. Cycle Complete: Hold fully green state
-      await sleep(3500);
-
-      // 8. Soft Reset (Fade out smoothly before jumping back to top)
-      progressLine.style.transition = 'opacity 0.5s ease';
-      progressLine.style.opacity = '0';
-      steps.forEach(step => step.classList.remove('active'));
-
-      await sleep(600);
+            await sleep(600);
+        }
     }
-  }
 
-  initProcessAnimation();
+    initProcessAnimation();
 });
