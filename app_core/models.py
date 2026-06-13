@@ -26,7 +26,8 @@ class Appointment(models.Model):
 
     PRODUCT_CHOICES = [
         ("health", "Health Insurance"),
-        ("term", "Term Insurance")
+        ("term", "Term Insurance"),
+        ("policy_review", "Policy Review")
     ]
 
     name = models.CharField(max_length=100)
@@ -40,7 +41,8 @@ class Appointment(models.Model):
         max_length=20,
         choices=PRODUCT_CHOICES
     )
-    appointment_datetime = models.DateTimeField( )
+    appointment_date = models.DateField()
+    appointment_slot = models.CharField(max_length=20, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
     customer_type = models.CharField(max_length=20, default="NEW")
 

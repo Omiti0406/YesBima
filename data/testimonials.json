@@ -1,0 +1,503 @@
+[
+    {
+        "name": "Ishita Kapoor",
+        "rating": 5,
+        "feedback": "I found it very useful to see different plans contrasted so I could pick the right one."
+    },
+    {
+        "name": "Rakesh Gupta",
+        "rating": 5,
+        "feedback": "The ability to look at various schemes allowed me to make a truly informed pick."
+    },
+    {
+        "name": "Ashish Kumar",
+        "rating": 5,
+        "feedback": "This team is highly efficient and professional—I cannot recommend them enough."
+    },
+    {
+        "name": "Neha Gupta",
+        "rating": 5,
+        "feedback": "Comparing multiple packages gave me the clarity I needed to decide."
+    },
+    {
+        "name": "Karan Malhotra",
+        "rating": 5,
+        "feedback": "The support was a massive time-saver and provided much-needed clarity."
+    },
+    {
+        "name": "Sneha Reddy",
+        "rating": 5,
+        "feedback": "A wonderful journey from the initial talk right through to the policy delivery."
+    },
+    {
+        "name": "Prashant Singh",
+        "rating": 3,
+        "feedback": "It was a middle-of-the-road experience; while the staff was supportive, I think they could act a bit faster."
+    },
+    {
+        "name": "Ritu Sharma",
+        "rating": 4,
+        "feedback": "I’m happy with the help I got, even though there were some small wait times."
+    },
+    {
+        "name": "Komal Verma",
+        "rating": 5,
+        "feedback": "I appreciated how the staff took the time to address every single query I had prior to buying."
+    },
+    {
+        "name": "Priya Verma",
+        "rating": 5,
+        "feedback": "The direction I received was incredibly beneficial and significantly cut down my search time."
+    },
+    {
+        "name": "Kavita Singh",
+        "rating": 5,
+        "feedback": "An impressively expert group that answers queries quickly. I’d suggest them to anyone."
+    },
+    {
+        "name": "Prashant Singh",
+        "rating": 5,
+        "feedback": "Getting started was a breeze and the help desk was always there when I reached out."
+    },
+    {
+        "name": "Nikita Jain",
+        "rating": 5,
+        "feedback": "My documentation was processed swiftly and the whole affair was stress-free."
+    },
+    {
+        "name": "Sneha Reddy",
+        "rating": 5,
+        "feedback": "The consultant went through every choice in detail, making it easy to pick the right coverage for my household."
+    },
+    {
+        "name": "Vivek Patel",
+        "rating": 5,
+        "feedback": "The setup phase was very fluid and I received timely assistance at every step."
+    },
+    {
+        "name": "Amit Sharma",
+        "rating": 5,
+        "feedback": "I had a seamless start-up process and the team was remarkably quick to help."
+    },
+    {
+        "name": "Akash Yadav",
+        "rating": 5,
+        "feedback": "The instructions were a huge help and saved me from a lot of unnecessary work."
+    },
+    {
+        "name": "Prashant Singh",
+        "rating": 5,
+        "feedback": "Being able to weigh different options side-by-side helped me choose with confidence."
+    },
+    {
+        "name": "Rahul Singh",
+        "rating": 4,
+        "feedback": "Great overall assistance; most of my questions were handled quite rapidly."
+    },
+    {
+        "name": "Abhishek Mishra",
+        "rating": 4,
+        "feedback": "Content with the aid provided, despite a couple of negligible holdups."
+    },
+    {
+        "name": "Sonal Sharma",
+        "rating": 5,
+        "feedback": "From the first meeting to the final paperwork, everything was handled perfectly."
+    },
+    {
+        "name": "Karan Malhotra",
+        "rating": 5,
+        "feedback": "Superb interaction and the quality of care was top-notch."
+    },
+    {
+        "name": "Rohit Kumar",
+        "rating": 3,
+        "feedback": "I got my policy in the end, but the timeline was a bit more extended than I anticipated."
+    },
+    {
+        "name": "Ritu Sharma",
+        "rating": 5,
+        "feedback": "The transition from initial inquiry to getting my policy was handled very well."
+    },
+    {
+        "name": "Saurabh Mishra",
+        "rating": 5,
+        "feedback": "The expert advice was a lifesaver and made the whole task much faster."
+    },
+    {
+        "name": "Anjali Mehta",
+        "rating": 3,
+        "feedback": "Service was okay, but I did have to reach out a few times to keep things moving."
+    },
+    {
+        "name": "Rahul Singh",
+        "rating": 5,
+        "feedback": "Every plan was laid out clearly by the advisor, helping me secure the best protection for my family."
+    },
+    
+    {
+        "name": "Ishita Kapoor",
+        "rating": 4,
+        "feedback": "Solid support system; they were very reactive to the bulk of my inquiries."
+    },
+    {
+        "name": "Nidhi Joshi",
+        "rating": 5,
+        "feedback": "The representatives were very patient while resolving my pre-purchase doubts."
+    },
+    {
+        "name": "Rohit Kumar",
+        "rating": 5,
+        "feedback": "High-quality assistance throughout; the level of transparency made everything simple."
+    },
+    {
+        "name": "Ankit Verma",
+        "rating": 5,
+        "feedback": "I appreciated the chance to review different options thoroughly before committing."
+    },
+    {
+        "name": "Tanvi Shah",
+        "rating": 5,
+        "feedback": "Exceptional care and the team really goes above and beyond for their clients."
+    },
+    {
+        "name": "Rakesh Gupta",
+        "rating": 5,
+        "feedback": "My policy arrived much sooner than expected and the process was very straightforward."
+    },
+    {
+        "name": "Shreya Kapoor",
+        "rating": 5,
+        "feedback": "Extremely skilled and prompt staff. They definitely earn a high recommendation."
+    },
+    {
+        "name": "Vikram Patel",
+        "rating": 5,
+        "feedback": "They didn't rush me and answered all my technical questions before I signed up."
+    },
+    {
+        "name": "Aditya Sharma",
+        "rating": 4,
+        "feedback": "A positive experience on the whole; the consultant really knew their stuff."
+    },
+    {
+        "name": "Arjun Nair",
+        "rating": 3,
+        "feedback": "Average marks from me—the team was nice, but the speed of service could be boosted."
+    },
+    {
+        "name": "Sandeep Rao",
+        "rating": 3,
+        "feedback": "Just okay. I felt like the back-and-forth communication could be tightened up."
+    },
+    {
+        "name": "Saurabh Mishra",
+        "rating": 3,
+        "feedback": "A standard experience; helpful people, but they could work on their turnaround times."
+    },
+    {
+        "name": "Payal Jain",
+        "rating": 5,
+        "feedback": "Fast issuance and zero complications. I’m very pleased with the speed."
+    },
+    {
+        "name": "Swati Agarwal",
+        "rating": 3,
+        "feedback": "The purchase went through, but I was expecting it to be a quicker process."
+    },
+    {
+        "name": "Rakesh Gupta",
+        "rating": 4,
+        "feedback": "I'm satisfied with how I was treated, even if there were a few minor lags."
+    },
+    {
+        "name": "Riya Gupta",
+        "rating": 3,
+        "feedback": "Not bad, not great—just average. Response times are one area for improvement."
+    },
+    {
+        "name": "Sandeep Rao",
+        "rating": 5,
+        "feedback": "The breakdown of policy choices was excellent, ensuring my family got the best deal."
+    },
+    {
+        "name": "Aditya Sharma",
+        "rating": 5,
+        "feedback": "They operate with a high degree of professionalism and are very quick to act."
+    },
+    {
+        "name": "Harish Reddy",
+        "rating": 5,
+        "feedback": "The signup process was effortless and the support team was very reliable."
+    },
+    {
+        "name": "Ashish Kumar",
+        "rating": 5,
+        "feedback": "It was great to be able to look at several plans to find the perfect fit."
+    },
+    {
+        "name": "Ritu Sharma",
+        "rating": 5,
+        "feedback": "The platform made it easy to contrast different insurance products side-by-side."
+    },
+    {
+        "name": "Mohit Tiwari",
+        "rating": 5,
+        "feedback": "The expert guidance on different family plans was invaluable for our decision."
+    },
+    {
+        "name": "Payal Jain",
+        "rating": 5,
+        "feedback": "I had a great time working with them from the consultation phase to the finish."
+    },
+    {
+        "name": "Manish Tiwari",
+        "rating": 3,
+        "feedback": "Fair service, but I had to be the one to initiate a few follow-up calls."
+    },
+    {
+        "name": "Sneha Reddy",
+        "rating": 5,
+        "feedback": "Very clear explanations of the various plans, which helped us choose the right coverage."
+    },
+    {
+        "name": "Divya Iyer",
+        "rating": 3,
+        "feedback": "The advisor was kind, but I was hoping for a more thorough comparison of the plans."
+    },
+    {
+        "name": "Meera Nair",
+        "rating": 3,
+        "feedback": "A basic experience. I think the clarity of communication could be improved."
+    },
+    {
+        "name": "Manish Tiwari",
+        "rating": 5,
+        "feedback": "The agent clarified every detail of the policies, making the choice for my family very clear."
+    },
+    {
+        "name": "Mohit Tiwari",
+        "rating": 5,
+        "feedback": "Thanks to the advisor's clear breakdown, I felt very confident in the plan I picked."
+    },
+    {
+        "name": "Harish Reddy",
+        "rating": 5,
+        "feedback": "The mentoring I received was top-tier and saved me a significant amount of effort."
+    },
+    {
+        "name": "Pooja Joshi",
+        "rating": 5,
+        "feedback": "A very disciplined and attentive team. I would definitely point others their way."
+    },
+    {
+        "name": "Ritu Sharma",
+        "rating": 3,
+        "feedback": "It was a standard encounter, though I feel the information flow could be smoother."
+    },
+    {
+        "name": "Ashish Kumar",
+        "rating": 5,
+        "feedback": "I never felt rushed while the team was going through my list of questions."
+    },
+    {
+        "name": "Akash Yadav",
+        "rating": 5,
+        "feedback": "Every question I had was met with a patient and thorough explanation."
+    },
+    {
+        "name": "Manish Tiwari",
+        "rating": 5,
+        "feedback": "Very smooth start and the staff were incredibly responsive whenever I had a doubt."
+    },
+    {
+        "name": "Mohit Tiwari",
+        "rating": 3,
+        "feedback": "Service was decent, though the time it took to get a reply was sometimes long."
+    },
+    {
+        "name": "Ishita Kapoor",
+        "rating": 5,
+        "feedback": "The suggestions given were very practical and helped streamline the whole process."
+    },
+    {
+        "name": "Swati Agarwal",
+        "rating": 3,
+        "feedback": "Overall okay, but it required some extra effort on my part to get updates."
+    },
+    {
+        "name": "Priya Verma",
+        "rating": 3,
+        "feedback": "It was successful in the end, but the time taken for the purchase was more than I liked."
+    },
+    {
+        "name": "Komal Verma",
+        "rating": 5,
+        "feedback": "The advice was spot on and really helped me move through the process quickly."
+    },
+    {
+        "name": "Vikram Patel",
+        "rating": 5,
+        "feedback": "I got my policy documents very fast and didn't run into any trouble at all."
+    },
+    {
+        "name": "Neha Gupta",
+        "rating": 5,
+        "feedback": "The help I was given was excellent and it really sped up the entire transaction."
+    },
+    {
+        "name": "Naveen Kumar",
+        "rating": 5,
+        "feedback": "Being able to look at all the different plans helped me reach a well-balanced decision."
+    },
+    {
+        "name": "Saurabh Mishra",
+        "rating": 5,
+        "feedback": "They were very accommodating and took the time to answer every query before I bought."
+    },
+    {
+        "name": "Prashant Singh",
+        "rating": 5,
+        "feedback": "The consultant did a great job explaining the family plans and finding us the best rate."
+    },
+    {
+        "name": "Arjun Nair",
+        "rating": 3,
+        "feedback": "The transaction went through fine, but the overall speed was a bit sluggish."
+    },
+    {
+        "name": "Aditya Sharma",
+        "rating": 5,
+        "feedback": "Onboarding was very simple and the help was always immediate."
+    },
+    {
+        "name": "Vikram Patel",
+        "rating": 5,
+        "feedback": "The advisor was very thorough in showing me how different plans would benefit my family."
+    },
+    {
+        "name": "Rahul Singh",
+        "rating": 5,
+        "feedback": "Detailed explanations from the advisor made selecting a plan for my home very simple."
+    },
+    {
+        "name": "Saurabh Mishra",
+        "rating": 5,
+        "feedback": "I appreciated how the advisor simplified the options to help me protect my family."
+    },
+    {
+        "name": "Ritu Sharma",
+        "rating": 5,
+        "feedback": "The advisor's breakdown of the policy benefits was essential for our final choice."
+    },
+    {
+        "name": "Priya Verma",
+        "rating": 4,
+        "feedback": "Everything went well and the plan they suggested was a perfect match for my needs."
+    },
+    {
+        "name": "Neha Gupta",
+        "rating": 5,
+        "feedback": "No hurdles at all—the policy was processed and issued in record time."
+    },
+    {
+        "name": "Mohit Tiwari",
+        "rating": 4,
+        "feedback": "Happy with the service, even if there were a few small pauses in communication."
+    },
+    {
+        "name": "Saurabh Mishra",
+        "rating": 3,
+        "feedback": "Good service, but I had to check in a couple of times to get things finalized."
+    },
+    {
+        "name": "Amit Sharma",
+        "rating": 5,
+        "feedback": "The professional guidance was excellent and kept me from wasting any time."
+    },
+    {
+        "name": "Tanvi Shah",
+        "rating": 5,
+        "feedback": "The advisor's insights into the family plans were very clear and helpful."
+    },
+    {
+        "name": "Naveen Kumar",
+        "rating": 3,
+        "feedback": "It was an okay experience; the team was helpful but could be a bit snappier."
+    },
+    {
+        "name": "Tanvi Shah",
+        "rating": 5,
+        "feedback": "I felt very supported as they carefully walked me through all my pre-purchase questions."
+    },
+    {
+        "name": "Sonal Sharma",
+        "rating": 4,
+        "feedback": "A solid experience overall, thanks to a very knowledgeable and helpful advisor."
+    },
+    {
+        "name": "Payal Jain",
+        "rating": 5,
+        "feedback": "The way the advisor explained our options made picking a family plan very easy."
+    },
+    {
+        "name": "Amit Sharma",
+        "rating": 5,
+        "feedback": "Comparing several different plans gave me the confidence that I was choosing correctly."
+    },
+    {
+        "name": "Akash Yadav",
+        "rating": 5,
+        "feedback": "A very professional setup with a team that actually responds to you."
+    },
+    {
+        "name": "Komal Verma",
+        "rating": 5,
+        "feedback": "The professional advice I received was a huge help and made everything easier."
+    },
+    {
+        "name": "Abhishek Mishra",
+        "rating": 5,
+        "feedback": "The advisor was very patient in explaining the various ways to protect my family."
+    },
+    {
+        "name": "Komal Verma",
+        "rating": 5,
+        "feedback": "The staff was very thorough in addressing my concerns before I made a commitment."
+    },
+    {
+        "name": "Prashant Singh",
+        "rating": 3,
+        "feedback": "The agent was helpful enough, but I wanted a bit more detail in the plan comparisons."
+    },
+    {
+        "name": "Ishita Kapoor",
+        "rating": 3,
+        "feedback": "The policy is in hand, though it took a little more time to get there than I hoped."
+    },
+    {
+        "name": "Prashant Singh",
+        "rating": 5,
+        "feedback": "The setup was very intuitive and I got help right away whenever I asked."
+    },
+    {
+        "name": "Ishita Kapoor",
+        "rating": 5,
+        "feedback": "Brilliant support—the customer service here is truly top-of-the-line."
+    },
+    {
+        "name": "Divya Iyer",
+        "rating": 5,
+        "feedback": "The advisor made it simple to understand the differences between the family plans."
+    },
+    {
+        "name": "Kavita Singh",
+        "rating": 5,
+        "feedback": "Total transparency throughout the process made the whole thing easy to follow."
+    },
+    {
+        "name": "Komal Verma",
+        "rating": 4,
+        "feedback": "I’m content with the support, despite some very minor holdups along the way."
+    }
+]
