@@ -486,4 +486,93 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     initProcessAnimation();
+
+    // ==========================================
+    // 7. REVIEW CAROUSEL NAVIGATION (3 at a time)
+    // ==========================================
+    
+    const reviewsPerPage = 3;
+    let currentGroupIndex = 0;
+    
+    const updateReviewDisplay = () => {
+        const reviewCards = document.querySelectorAll('.review-card');
+        const totalReviews = reviewCards.length;
+        const totalGroups = Math.ceil(totalReviews / reviewsPerPage);
+        
+        // Calculate range
+        const startIndex = currentGroupIndex * reviewsPerPage;
+        const endIndex = Math.min(startIndex + reviewsPerPage, totalReviews);
+        
+        console.log(`Showing reviews ${startIndex + 1} to ${endIndex} of ${totalReviews}`);
+        
+        // Show/hide reviews
+        reviewCards.forEach((card, index) => {
+            if (index >= startIndex && index < endIndex) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        // Update counter
+        const counterStart = document.getElementById('reviewCounterStart');
+        const counterEnd = document.getElementById('reviewCounterEnd');
+        if (counterStart) counterStart.textContent = startIndex + 1;
+        if (counterEnd) counterEnd.textContent = endIndex;
+        
+        // Update button states
+        const prevBtn = document.getElementById('reviewPrevBtn');
+        const nextBtn = document.getElementById('reviewNextBtn');
+        
+        if (prevBtn) {
+            if (currentGroupIndex === 0) {
+                prevBtn.style.opacity = '0.5';
+                prevBtn.style.pointerEvents = 'none';
+            } else {
+                prevBtn.style.opacity = '1';
+                prevBtn.style.pointerEvents = 'auto';
+            }
+        }
+        
+        if (nextBtn) {
+            if (currentGroupIndex === totalGroups - 1) {
+                nextBtn.style.opacity = '0.5';
+                nextBtn.style.pointerEvents = 'none';
+            } else {
+                nextBtn.style.opacity = '1';
+                nextBtn.style.pointerEvents = 'auto';
+            }
+        }
+    };
+    
+    // Attach event listeners
+    const reviewPrevBtn = document.getElementById('reviewPrevBtn');
+    const reviewNextBtn = document.getElementById('reviewNextBtn');
+    
+    if (reviewPrevBtn) {
+        reviewPrevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentGroupIndex > 0) {
+                currentGroupIndex--;
+                updateReviewDisplay();
+            }
+        });
+    }
+    
+    if (reviewNextBtn) {
+        reviewNextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const reviewCards = document.querySelectorAll('.review-card');
+            const totalReviews = reviewCards.length;
+            const totalGroups = Math.ceil(totalReviews / reviewsPerPage);
+            
+            if (currentGroupIndex < totalGroups - 1) {
+                currentGroupIndex++;
+                updateReviewDisplay();
+            }
+        });
+    }
+    
+    // Initialize review display
+    updateReviewDisplay();
 });
