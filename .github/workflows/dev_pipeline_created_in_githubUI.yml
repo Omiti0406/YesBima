@@ -1,9 +1,6 @@
 name: YesBima DEV Pipeline
 
 on:
-  push:
-    branches:
-      - dev_omi
   workflow_dispatch:
 
 env:
