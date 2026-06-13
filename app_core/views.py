@@ -9,10 +9,14 @@ from django.utils import timezone
 from django.utils.dateparse import parse_datetime
 from app_core.utils.logger import log_info, log_error, log_debug, log_warning, log_audit
 import json
+from django.conf import settings
 
 # Create your views here.
 def home(request):
-    return render(request, 'app_core/index.html')
+    with open(settings.BASE_DIR / 'data' / 'testimonials.json', encoding='utf-8') as file:
+        testimonials = json.load(file)
+
+    return render(request, 'app_core/index.html', {'testimonials': testimonials})
 
 def generate_customer_record(**data):
     cleaned_data = {
@@ -52,7 +56,8 @@ def book_appointment(request):
             phone = data.get("contactNo")
             # insurance_type = data.get("insurance")
             product_type = data.get("productType")
-            appointment_datetime = data.get("dateTime")
+            appointment_date = data.get("bookingDate")
+            appointment_slot = data.get("bookingTime")
 
             resp = Appointment.objects.create(
                 name=name,
@@ -60,7 +65,8 @@ def book_appointment(request):
                 phone=phone,
                 # insurance_type=insurance_type,
                 product_type=product_type,
-                appointment_datetime=timezone.make_aware(parse_datetime(appointment_datetime)),  ####  enabling timezone awareness for datetime field
+                appointment_date=timezone.make_aware(parse_datetime(appointment_date)),  ####  enabling timezone awareness for datetime field
+                appointment_slot=appointment_slot,
                 customer_type="REPEATED" if customerCreationResult == "UserExists" else "NEW"
             )
             log_info(f"Appointment booked successfully: {resp.appointment_number}")
