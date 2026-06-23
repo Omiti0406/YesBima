@@ -1,0 +1,90 @@
+/* =========================================================
+   LIGHT THEME OVERRIDES
+   These variables replace the dark ones when body has .light-theme
+=========================================================== */
+body.light-theme {
+    /* --- Backgrounds & Borders --- */
+    --bg-deep: #F8FAFC !important; /* Light Slate / Off-white base */
+    --bg-card: #FFFFFF; /* Pure white cards */
+    --bg-card-hover: #F1F5F9; /* Very light grey/blue for hover state */
+    --border-glow: rgba(0, 0, 0, 0.1); /* Darker borders for structure in light mode */
+
+    /* --- Accents --- */
+    --accent-primary: #2563EB; /* Slightly darker electric blue for better contrast on white */
+    --accent-glow: rgba(5, 150, 105, 0.15); /* Softer emerald glow for light backgrounds */
+    --accent-secondary: #059669; /* Darker emerald green for readability */
+    --error: #DC2626; /* Darker red for error states */
+
+    /* --- Typography --- */
+    --text-main: #0F172A; /* Deep Slate / Near Black for primary reading text */
+    --text-muted: #475569; /* Medium Slate Gray for secondary text */
+    --text-dark: #FFFFFF; /* Inverted from dark theme so text inside colored buttons/chips remains visible */
+
+    /* --- Transitions --- */
+    /* Transition doesn't change, but included for completeness if you redefine it */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* --- Bulletproof Background Enforcement --- */
+    background-color: var(--bg-deep) !important;
+    background-image: none !important;
+}
+
+/* --- Specific Element Tweaks for Light Mode --- */
+
+/* Add soft shadows to cards since the background is white */
+body.light-theme .glass-card,
+body.light-theme .comp-table,
+body.light-theme .faq-item {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Timeline Process adjustments */
+body.light-theme .t-step-marker {
+    background: #FFFFFF;
+    color: var(--text-muted);
+}
+body.light-theme .timeline-base-line {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Header & Logos */
+body.light-theme .logo-slide {
+    background: #F8FAFC; /* Match light background */
+    border: 1px solid rgba(0,0,0,0.05);
+}
+body.light-theme .carousel-fade-left {
+    background: linear-gradient(to right, #F8FAFC 0%, transparent 100%);
+}
+body.light-theme .carousel-fade-right {
+    background: linear-gradient(to left, #F8FAFC 0%, transparent 100%);
+}
+
+/* Modal UI adjustments */
+body.light-theme .modal-content {
+    background: #FFFFFF;
+}
+body.light-theme .modal-content h2 {
+    color: var(--text-main);
+}
+body.light-theme input, 
+body.light-theme select {
+    background: #F1F5F9;
+    color: var(--text-main);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+body.light-theme input:focus, 
+body.light-theme select:focus {
+    background: #FFFFFF;
+    border-color: var(--accent-blue);
+}
+body.light-theme select option {
+    background: #FFFFFF;
+    color: var(--text-main);
+}
+body.light-theme .select-chip {
+    background: #F1F5F9;
+    color: var(--text-main);
+}
+body.light-theme .select-chip:hover {
+    background: #E2E8F0;
+}

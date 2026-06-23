@@ -486,4 +486,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     initProcessAnimation();
+
+
+    // ==========================================
+    // THEME TOGGLE LOGIC (Dark/Light Mode)
+    // ==========================================
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    
+    // 1. Check if user already has a saved preference in Local Storage
+    const savedTheme = localStorage.getItem('yesbima-theme');
+    
+    // 2. If preference is 'light', apply it immediately on load
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-theme');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+    }
+
+    // 3. Toggle button click event
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            // Toggle the class on the body
+            document.body.classList.toggle('light-theme');
+            
+            // Check if light theme is currently active
+            if (document.body.classList.contains('light-theme')) {
+                // Change icon to Moon and save preference
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('yesbima-theme', 'light');
+            } else {
+                // Change icon back to Sun and save preference
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('yesbima-theme', 'dark');
+            }
+        });
+    }
 });
