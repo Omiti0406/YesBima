@@ -184,6 +184,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (/^[0-9]{10}$/.test(contactValue)) {
             sendOtpBtn.disabled = true;
             sendOtpBtn.textContent = "Sending...";
+            otpInput.classList.remove("input-error");
+            otpError.textContent = "";
+            validateOtpBtn.textContent = "Validate";
+            validateOtpBtn.disabled = false;
 
             setTimeout(() => {
                 otpSection.style.display = "block";
@@ -317,9 +321,13 @@ document.addEventListener('DOMContentLoaded', () => {
         step2.style.display = 'none';
 
         otpSection.style.display = "none";
-        // sendOtpBtn.style.display = "inline-flex";
+        sendOtpBtn.style.display = "inline-flex";
         sendOtpBtn.textContent = "Send OTP";
         sendOtpBtn.disabled = false;
+        validateOtpBtn.textContent = "Validate";
+        validateOtpBtn.disabled = false;
+        otpInput.classList.remove("input-error");
+        otpError.textContent = "";
         verifiedTick.style.display = "none";
         contactInput.readOnly = false;
         contactInput.style.opacity = "1";

@@ -887,7 +887,13 @@ footer {
 .input-group {
   display: flex;
   gap: 10px;
-  align-items: stretch;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.input-group input,
+.input-group .btn {
+  min-height: 50px;
 }
 
 .input-group input {
@@ -899,7 +905,9 @@ footer {
   padding: 0 20px;
   border-radius: 10px;
   white-space: nowrap;
-  height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .error-text {
