@@ -322,33 +322,33 @@
             <div class="reveal">
                 <h2>We don’t make hollow promises.</h2>
                 <p class="subtitle">Here’s proof from families who trusted us.</p>
-                <div class="reviews">
-                    <div class="glass-card" style="margin-bottom: 20px; padding: 30px;">
-                        <div class="stars-gold"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p style="font-style: italic; font-size: 0.95rem;">"Suyash Buwade has been helping our family
-                            navigate health insurance planning. He has been proactive, diligent and sincere."</p>
-                        <div class="user-info"><i class="fas fa-user-circle"
-                                style="font-size: 1.5rem; color: var(--accent-primary);"></i> Dr. Suresh JeyaRaman</div>
+                <div class="testimonials-carousel">
+                    <button id="testimonialPrevBtn" class="testimonial-nav-btn testimonial-prev" aria-label="Previous testimonials">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="testimonials-wrapper">
+                        <div class="testimonials-container" id="testimonialsContainer">
+                            {% for testimonial in testimonials %}
+                            <div class="testimonial-card glass-card" data-index="{{ forloop.counter0 }}" style="padding: 30px;">
+                                <div class="stars-gold">
+                                    {% for i in "x"|rjust:testimonial.rating %}
+                                    <i class="fas fa-star"></i>
+                                    {% endfor %}
+                                </div>
+                                <p style="font-style: italic; font-size: 0.95rem; line-height: 1.6;">"{{ testimonial.feedback }}"</p>
+                                <div class="user-info">
+                                    <i class="fas fa-user-circle" style="font-size: 1.5rem; color: var(--accent-primary);"></i>
+                                    {{ testimonial.name }}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
                     </div>
-
-                    <div class="glass-card" style="margin-bottom: 20px; padding: 30px;">
-                        <div class="stars-gold"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p style="font-style: italic; font-size: 0.95rem;">"Deepti Pal was my advisor. She helped me
-                            through the process and was very flexible in terms of follow up calls."</p>
-                        <div class="user-info"><i class="fas fa-user-circle"
-                                style="font-size: 1.5rem; color: var(--accent-primary);"></i> Navaneeth</div>
-                    </div>
-
-                    <div class="glass-card" style="margin-bottom: 20px; padding: 30px;">
-                        <div class="stars-gold"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p style="font-style: italic; font-size: 0.95rem;">"Deepti Pal was my advisor. She helped me
-                            through the process and was very flexible in terms of follow up calls."</p>
-                        <div class="user-info"><i class="fas fa-user-circle"
-                                style="font-size: 1.5rem; color: var(--accent-primary);"></i> Navaneeth</div>
-                    </div>
+                    
+                    <button id="testimonialNextBtn" class="testimonial-nav-btn testimonial-next" aria-label="Next testimonials">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
 

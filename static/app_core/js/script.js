@@ -34,10 +34,68 @@ document.addEventListener('DOMContentLoaded', () => {
     const closePopupBtn = document.getElementById("closePopupBtn");
     const popupDetails = document.getElementById("popupDetails");
 
+    // Testimonials Carousel Elements
+    const testimonialPrevBtn = document.getElementById("testimonialPrevBtn");
+    const testimonialNextBtn = document.getElementById("testimonialNextBtn");
+    const testimonialsContainer = document.getElementById("testimonialsContainer");
+    const testimonialCards = testimonialsContainer ? Array.from(testimonialsContainer.querySelectorAll(".testimonial-card")) : [];
+
 
     // ==========================================
-    // 2. MODAL & STEP TRANSITIONS
+    // TESTIMONIALS CAROUSEL LOGIC
     // ==========================================
+    let currentTestimonialPage = 0;
+    const testimonialsPerPage = 3;
+    const totalTestimonials = testimonialCards.length;
+    const totalTestimonialPages = Math.max(1, Math.ceil(totalTestimonials / testimonialsPerPage));
+
+    const updateTestimonialDisplay = () => {
+        if (testimonialCards.length === 0) return;
+
+        // Hide all cards
+        testimonialCards.forEach(card => {
+            card.style.display = 'none';
+        });
+
+        // Show cards for current page
+        const startIdx = currentTestimonialPage * testimonialsPerPage;
+        const endIdx = Math.min(startIdx + testimonialsPerPage, totalTestimonials);
+        
+        for (let i = startIdx; i < endIdx; i++) {
+            testimonialCards[i].style.display = 'block';
+        }
+
+        // Update button states
+        if (testimonialPrevBtn) {
+            testimonialPrevBtn.disabled = currentTestimonialPage === 0;
+        }
+        if (testimonialNextBtn) {
+            testimonialNextBtn.disabled = currentTestimonialPage >= totalTestimonialPages - 1;
+        }
+    };
+
+    if (testimonialPrevBtn) {
+        testimonialPrevBtn.addEventListener('click', () => {
+            if (currentTestimonialPage > 0) {
+                currentTestimonialPage -= 1;
+                updateTestimonialDisplay();
+            }
+        });
+    }
+
+    if (testimonialNextBtn) {
+        testimonialNextBtn.addEventListener('click', () => {
+            if (currentTestimonialPage < totalTestimonialPages - 1) {
+                currentTestimonialPage += 1;
+                updateTestimonialDisplay();
+            }
+        });
+    }
+
+    // Initialize testimonials display
+    updateTestimonialDisplay();
+
+
     openBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
