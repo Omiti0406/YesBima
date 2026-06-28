@@ -4,7 +4,7 @@ FROM python:3.12-slim
 # Environment settings
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-#ENV DJANGO_SETTINGS_MODULE=YesBima.settings.settings_gcp
+ENV DJANGO_SETTINGS_MODULE=YesBima.settings.settings_gcp
 
 # Set work directory
 WORKDIR /app
