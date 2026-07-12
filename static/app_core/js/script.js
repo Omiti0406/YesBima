@@ -44,56 +44,80 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // TESTIMONIALS CAROUSEL LOGIC
     // ==========================================
-    let currentTestimonialPage = 0;
-    const testimonialsPerPage = 3;
-    const totalTestimonials = testimonialCards.length;
-    const totalTestimonialPages = Math.max(1, Math.ceil(totalTestimonials / testimonialsPerPage));
+    if (testimonialsContainer && testimonialCards.length > 0) {
+        let currentIndex = 0;
+        const totalTestimonials = testimonialCards.length;
 
-    const updateTestimonialDisplay = () => {
-        if (testimonialCards.length === 0) return;
+        const getVisibleCards = () => {
+            if (window.innerWidth <= 768) return 1;
+            if (window.innerWidth <= 1024) return 2;
+            return 3;
+        };
 
-        // Hide all cards
-        testimonialCards.forEach(card => {
-            card.style.display = 'none';
-        });
+        const updateCarousel = (withAnimation = true) => {
+            const visibleCards = getVisibleCards();
+            const card = testimonialCards[0];
+            if (!card) return;
 
-        // Show cards for current page
-        const startIdx = currentTestimonialPage * testimonialsPerPage;
-        const endIdx = Math.min(startIdx + testimonialsPerPage, totalTestimonials);
-        
-        for (let i = startIdx; i < endIdx; i++) {
-            testimonialCards[i].style.display = 'block';
-        }
+            // Temporarily disable transition for instant updates (e.g., on resize)
+            if (!withAnimation) {
+                testimonialsContainer.style.transition = 'none';
+            }
 
-        // Update button states
-        if (testimonialPrevBtn) {
-            testimonialPrevBtn.disabled = currentTestimonialPage === 0;
-        }
+            const cardWidth = card.offsetWidth;
+            // The gap is set to 24px in the CSS for testimonials-container
+            const gap = 24;
+            
+            const totalMove = (cardWidth + gap) * currentIndex;
+
+            testimonialsContainer.style.transform = `translateX(-${totalMove}px)`;
+
+            // Update button states
+            testimonialPrevBtn.disabled = currentIndex === 0;
+            testimonialNextBtn.disabled = currentIndex >= totalTestimonials - visibleCards;
+
+            // Restore transition if it was disabled
+            if (!withAnimation) {
+                // Use a timeout to ensure the transform has been applied before re-enabling transitions
+                setTimeout(() => {
+                    testimonialsContainer.style.transition = 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
+                }, 50);
+            }
+        };
+
         if (testimonialNextBtn) {
-            testimonialNextBtn.disabled = currentTestimonialPage >= totalTestimonialPages - 1;
+            testimonialNextBtn.addEventListener('click', () => {
+                const visibleCards = getVisibleCards();
+                if (currentIndex < totalTestimonials - visibleCards) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
         }
-    };
 
-    if (testimonialPrevBtn) {
-        testimonialPrevBtn.addEventListener('click', () => {
-            if (currentTestimonialPage > 0) {
-                currentTestimonialPage -= 1;
-                updateTestimonialDisplay();
-            }
+        if (testimonialPrevBtn) {
+            testimonialPrevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+        }
+
+
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                // Reset to the beginning on resize to avoid a broken state
+                currentIndex = 0;
+                updateCarousel(false); // Update without animation
+            }, 200);
         });
-    }
 
-    if (testimonialNextBtn) {
-        testimonialNextBtn.addEventListener('click', () => {
-            if (currentTestimonialPage < totalTestimonialPages - 1) {
-                currentTestimonialPage += 1;
-                updateTestimonialDisplay();
-            }
-        });
+        // Initial setup
+        updateCarousel(false);
     }
-
-    // Initialize testimonials display
-    updateTestimonialDisplay();
 
 
     openBtns.forEach(btn => {
